@@ -1,5 +1,5 @@
 # Fintech Credit Risk Analysis
-### Bureau-Independent Risk Segmentation for Digital Lending
+### Bureau-Independent Credit Risk Segmentation for Digital Lending
 
 ---
 
@@ -7,7 +7,7 @@
 
 Nigeria's digital lending industry has grown rapidly, expanding access to credit for a population historically shut out of traditional banking. But this growth has come with rising default rates, and most digital lenders cannot rely on traditional credit bureau records — the majority of borrowers have no bureau history at all. Lenders depend on alternative signals — transaction behavior, repayment patterns, credit utilization, income ratios — to assess risk.
 
-This project builds a bureau-independent credit-risk segmentation pipeline using a public consumer-credit dataset as a proof of concept, directly transferable to a Nigerian digital lender's real transaction and repayment data.
+This project develops a bureau-independent credit risk segmentation pipeline using a public consumer-credit dataset as a proof of concept. While the dataset is not Nigerian, its alternative credit signals closely mirror those used by digital lenders to assess borrower risk where traditional credit histories are unavailable.
 
 *(Full problem statement to be pasted in from project scoping doc.)*
 
