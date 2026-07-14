@@ -1,6 +1,13 @@
--- Project 08: Fintech Credit Risk Analysis
--- Phase 2: Pillar 1 — Borrower Default Risk
--- Purpose: Identify which borrowers show the highest risk of default
+/*============================================================
+ Project : Fintech Credit Risk Analysis
+ Phase   : 02 — Borrower Default Risk
+ File    : 02_borrower_default_risk.sql
+ Author  : HarjiiBoss
+ Purpose : Segment borrowers by default risk and identify
+           behavioral patterns associated with delinquency.
+ Status  : COMPLETE
+============================================================*/
+
 USE fintech_credit_risk;
 
 -- Query 1: Delinquency rate by age band
