@@ -1,7 +1,9 @@
--- Project 08: Fintech Credit Risk Analysis
--- Phase 0: Environment Setup
--- Tool: MySQL Workbench
--- Source: Kaggle "Give Me Some Credit" (cs-training.csv, 150,000 rows)
+/*====================================================
+Project : Fintech Credit Risk Analysis
+Phase   : 0 — Project Setup & Data Ingestion
+Author  : HarjiiBoss
+Purpose : Create schema and prepare the borrower dataset
+====================================================*/
 
 -- Step 1: Create schema
 CREATE SCHEMA fintech_credit_risk;
