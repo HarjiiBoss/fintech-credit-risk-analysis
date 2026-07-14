@@ -2,7 +2,7 @@
  Project : Fintech Credit Risk Analysis
  Phase   : 01 — Data Cleaning & Exploratory Data Analysis
  File    : 01_cleaning_eda.sql
- Author  : HarjiiBoss
+ Author  : Taofeek Salami
  Purpose : Assess data quality, identify missing values,
            detect duplicates and outliers, and establish
            the baseline dataset before analysis.
