@@ -1,47 +1,133 @@
-# Phase 1 — Data Cleaning & EDA
+# Phase 1 — Data Cleaning & Exploratory Data Analysis (EDA)
 
-**Date:** 2026-07-13
-**Status:** Complete
-**Dataset after cleaning:** 149,999 rows × 14 columns → saved to
-`data/processed/cs_training_cleaned.csv`
+**Date:** 2026-07-13  
+**Status:** ✅ Complete  
+**Dataset after cleaning:** **149,999 rows × 14 columns**  
+**Output:** `data/processed/cs_training_cleaned.csv`
 
-## Data Quality Baseline (sql/01a_exploration.sql)
+---
+
+## Overview
+
+This phase established the data quality baseline for the project by auditing missing values, validating data integrity, identifying outliers, and documenting all preprocessing decisions. Rather than aggressively removing anomalous observations, potentially meaningful behavioral signals were retained where appropriate to support downstream credit risk analysis.
+
+---
+
+## Data Quality Assessment
+
 | Check | Result |
-|---|---|
-| Null `MonthlyIncome` | 29,731 (19.82%) |
-| Null `NumberOfDependents` | 3,924 (2.62%) |
-| Duplicate `id` | 0 |
-| Target balance (`SeriousDlqin2yrs`) | 0 = 93.32% · 1 = 6.68% (imbalanced) |
-| `age = 0` | 1 record |
-| `RevolvingUtilizationOfUnsecuredLines > 1` | 3,321 (2.21%), max = 50,708 |
+|:---|:---|
+| Total records (raw) | 150,000 |
+| Total records (cleaned) | 149,999 |
+| Missing `MonthlyIncome` | 29,731 (19.82%) |
+| Missing `NumberOfDependents` | 3,924 (2.62%) |
+| Duplicate borrower IDs | 0 |
+| Target balance (`SeriousDlqin2yrs`) | Non-default: **93.32%** • Default: **6.68%** |
+| Invalid age (`age = 0`) | 1 record |
+| Utilization > 100% | 3,321 (2.21%) |
+| Maximum utilization observed | 50,708 |
 
-## Cleaning Decisions
-1. **age = 0 (1 record):** Dropped — confirmed data entry error.
-2. **MonthlyIncome nulls (19.82%):** Flagged via `income_missing` boolean,
-   not imputed. Rationale: imputing ~20% of a core Pillar 2 feature would
-   fabricate a large share of income-based findings.
-3. **NumberOfDependents nulls (2.62%):** Imputed with 0 (mode). Rationale:
-   low missingness, low distortion risk vs. income.
-4. **Utilization > 1 (2.21%):** Flagged via `utilization_extreme_flag`,
-   not capped or dropped. Rationale: treated as a potential behavioral
-   risk signal rather than noise.
+---
+
+## Data Cleaning Decisions
+
+### 1. Invalid Age
+
+- Removed the single record where `age = 0`.
+- **Reason:** Confirmed data-entry error.
+
+---
+
+### 2. Missing Monthly Income
+
+- Created an `income_missing` indicator.
+- Missing values were intentionally **not imputed**.
+
+**Rationale**
+
+Approximately 20% of borrowers lack income information. Imputing such a large proportion of a core financial variable would introduce substantial uncertainty and potentially distort analyses related to borrower affordability and revenue exposure.
+
+---
+
+### 3. Missing Number of Dependents
+
+- Missing values replaced with **0** (mode).
+
+**Rationale**
+
+Only 2.62% of observations were affected, making mode imputation unlikely to materially influence subsequent analyses.
+
+---
+
+### 4. Extreme Credit Utilization
+
+- Created a `utilization_extreme_flag`.
+- Extreme utilization values were **retained**, not capped or removed.
+
+**Rationale**
+
+Rather than treating these observations as noise, they were preserved as potential behavioral indicators of financial distress for later borrower risk segmentation.
+
+---
 
 ## Key Findings
-- **Extreme utilization correlates strongly with default:** borrowers
-  flagged `utilization_extreme_flag = True` show a **37.25%** default
-  rate vs. **5.99%** for others — over 6x the population baseline (6.68%).
-  Candidate headline finding for Pillar 1 (early warning signal).
-- **Severe multicollinearity** among the three delinquency-count fields
-  (30-59, 60-89, 90+ days past due): pairwise correlation 0.98–0.99.
-  These move together as one behavioral cluster, not independent signals
-  — relevant to how the Phase 2 composite risk score is interpreted.
-- **Raw utilization shows ~0 linear correlation with default (-0.00)**
-  despite the strong signal found via flagging — Pearson correlation
-  missed this because extreme outliers swamp the linear relationship.
-  Supports flagging/bucketing over using the raw feature directly.
-- Mild negative correlation between age and NumberOfDependents (-0.22).
 
-## Outputs Saved
+### 1. Extreme Utilization is a Strong Early Risk Signal
+
+Borrowers flagged with `utilization_extreme_flag = True` exhibited a **37.25% default rate**, compared with **5.99%** among all other borrowers.
+
+This represents a default rate more than **six times higher** than the overall portfolio baseline (**6.68%**) and emerged as one of the strongest early indicators of borrower risk.
+
+---
+
+### 2. Delinquency Variables Measure the Same Underlying Behavior
+
+The three delinquency variables—
+
+- 30–59 days past due
+- 60–89 days past due
+- 90+ days past due
+
+show pairwise correlations ranging from **0.98 to 0.99**.
+
+These variables should therefore be interpreted as highly related behavioral indicators rather than independent predictors, informing the composite behavioral risk score developed in Phase 2.
+
+---
+
+### 3. Raw Utilization Alone is Misleading
+
+Although extreme utilization strongly predicts default, the raw utilization variable exhibits almost **no linear correlation** with default (**≈ 0.00**).
+
+This occurs because a relatively small number of extremely large values distort Pearson correlation, supporting the decision to analyze utilization using behavioral flags and segmentation rather than relying solely on the raw numeric feature.
+
+---
+
+### 4. Limited Relationship Between Age and Dependents
+
+Age and number of dependents show only a mild negative correlation (**−0.22**), indicating relatively weak linear association between the two variables.
+
+---
+
+## Outputs Generated
+
+- `data/processed/cs_training_cleaned.csv`
 - `outputs/eda_distributions.png`
 - `outputs/eda_correlation.png`
 - `outputs/eda_target_balance.png`
+
+---
+
+## Phase Summary
+
+**Objectives Completed**
+
+- ✅ Assessed overall data quality
+- ✅ Audited missing values
+- ✅ Verified data integrity
+- ✅ Identified anomalous observations
+- ✅ Documented all preprocessing decisions
+- ✅ Produced cleaned analytical dataset
+- ✅ Generated exploratory visualizations
+- ✅ Established baseline findings for Phase 2
+
+**Status:** ✅ Complete
