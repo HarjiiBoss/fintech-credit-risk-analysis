@@ -1,6 +1,14 @@
--- Project 08: Fintech Credit Risk Analysis
--- Phase 1A: Exploratory Queries
--- Purpose: Understand data quality and baseline metrics before analysis
+/*============================================================
+ Project : Fintech Credit Risk Analysis
+ Phase   : 01 — Data Cleaning & Exploratory Data Analysis
+ File    : 01_cleaning_eda.sql
+ Author  : HarjiiBoss
+ Purpose : Explore data quality, assess missing values,
+           detect outliers, and perform exploratory
+           analysis before feature engineering.
+ Status  : COMPLETE
+============================================================*/
+
 USE fintech_credit_risk;
 
 -- Query 1: NULL audit — known gaps are MonthlyIncome and NumberOfDependents
