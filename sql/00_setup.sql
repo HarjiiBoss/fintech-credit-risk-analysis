@@ -1,17 +1,34 @@
-/*====================================================
-Project : Fintech Credit Risk Analysis
-Phase   : 0 — Project Setup & Data Ingestion
-Author  : HarjiiBoss
-Purpose : Create schema and prepare the borrower dataset
-====================================================*/
+/*============================================================
+ Project : Fintech Credit Risk Analysis
+ Phase   : 00 — Project Setup & Data Ingestion
+ File    : 00_setup.sql
+ Author  : HarjiiBoss
+ Purpose : Create the project database and prepare the
+           borrower dataset for analysis.
+ Status  : COMPLETE
+============================================================*/
 
--- Step 1: Create schema
+/*============================================================
+STEP 1 — CREATE DATABASE
+============================================================*/
+
 CREATE SCHEMA fintech_credit_risk;
 
--- Step 2: Set default schema
+
+/*============================================================
+STEP 2 — SELECT DATABASE
+============================================================*/
+
 USE fintech_credit_risk;
 
--- Step 3: Create table matching the 11 dataset columns + target
+
+/*============================================================
+STEP 3 — CREATE BORROWERS TABLE
+
+Creates the primary table containing all 11 dataset
+features plus the target variable (SeriousDlqin2yrs).
+============================================================*/
+
 CREATE TABLE borrowers (
     id                                      INT PRIMARY KEY,
     SeriousDlqin2yrs                        TINYINT,
@@ -27,40 +44,74 @@ CREATE TABLE borrowers (
     NumberOfDependents                      INT NULL
 );
 
--- Step 4: Widen RevolvingUtilizationOfUnsecuredLines to DOUBLE
--- Reason: initial load failed with "Out of range value" — the raw dataset
--- contains extreme outlier values (max found: 50,708) that exceed
--- DECIMAL(10,6) precision. Loading raw values as-is rather than rejecting
--- them at insert time; outliers are handled explicitly in Phase 1 cleaning.
+
+/*============================================================
+STEP 4 — MODIFY COLUMN TYPE
+
+Reason:
+The initial data load failed because the raw dataset
+contains extreme outlier values (maximum = 50,708),
+which exceed the precision supported by DECIMAL(10,6).
+
+The column is widened to DOUBLE so the original values
+are preserved during ingestion.
+
+Outlier detection and treatment are performed later
+during Phase 1 (Data Cleaning & EDA).
+============================================================*/
+
 ALTER TABLE borrowers
 MODIFY COLUMN RevolvingUtilizationOfUnsecuredLines DOUBLE;
 
--- Step 5: Load data
--- Loaded via Python/Pandas ETL pipeline (SQLAlchemy + mysql-connector-python)
--- in notebooks/01_cleaning_eda.ipynb — see that notebook for the load script.
--- (Table Data Import Wizard was attempted first but was too slow for
--- 150,000 rows; switched to Python ETL, consistent with Project 07.)
 
--- Step 6: Verify row count (should return 150000)
-SELECT COUNT(*) FROM borrowers;
+/*============================================================
+STEP 5 — LOAD DATA
 
-```
--- Expected Result
--- +--------+
--- |150000 |
--- +--------+
-```
+The dataset was loaded using a Python ETL pipeline
+(SQLAlchemy + mysql-connector-python) from the notebook:
 
----
+    notebooks/01_cleaning_eda.ipynb
 
-## Phase Completion Checklist
+Reason:
+MySQL Workbench's Table Data Import Wizard proved too
+slow for the 150,000-row dataset, so a Python-based
+pipeline was used instead for faster, reproducible
+data ingestion.
+============================================================*/
 
-- ✅ Repository initialized
-- ✅ Dataset downloaded
-- ✅ MySQL schema created
-- ✅ Table created
-- ✅ Data loaded successfully
-- ✅ Data integrity verified
-- ✅ ETL workflow documented  
 
-**Status:** Complete  
+/*============================================================
+STEP 6 — VERIFY DATA LOAD
+
+Expected Result:
+150,000 records successfully imported.
+============================================================*/
+
+SELECT COUNT(*) AS total_rows
+FROM borrowers;
+
+
+/*============================================================
+Expected Output
+
++------------+
+| total_rows |
++------------+
+|     150000 |
++------------+
+============================================================*/
+
+
+/*============================================================
+PHASE SUMMARY
+
+✓ GitHub repository initialized
+✓ Dataset downloaded from Kaggle
+✓ Database schema created
+✓ Borrowers table created
+✓ Column datatype adjusted for outlier handling
+✓ Dataset successfully loaded
+✓ Row count verified (150,000)
+
+Status : COMPLETE
+============================================================*/
