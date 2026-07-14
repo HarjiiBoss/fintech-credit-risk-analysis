@@ -44,10 +44,12 @@ MODIFY COLUMN RevolvingUtilizationOfUnsecuredLines DOUBLE;
 -- Step 6: Verify row count (should return 150000)
 SELECT COUNT(*) FROM borrowers;
 
+```
 -- Expected Result
 -- +--------+
 -- |150000 |
 -- +--------+
+```
 
 ---
 
@@ -59,6 +61,6 @@ SELECT COUNT(*) FROM borrowers;
 - ✅ Table created
 - ✅ Data loaded successfully
 - ✅ Data integrity verified
-- ✅ ETL workflow documented
+- ✅ ETL workflow documented  
 
-**Status:** Complete
+**Status:** Complete  
