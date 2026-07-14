@@ -1,7 +1,14 @@
--- Project 08: Fintech Credit Risk Analysis
--- Phase 4: Pillar 3 — Operational Inefficiency
--- Purpose: Identify where the lending process exposes the business to
--- avoidable cost or risk
+/*============================================================
+ Project : Fintech Credit Risk Analysis
+ Phase   : 04 — Operational Inefficiency
+ File    : 04_operational_inefficiency.sql
+ Author  : HarjiiBoss
+ Purpose : Evaluate operational risk indicators and
+           identify lending process inefficiencies that
+           contribute to higher default rates.
+ Status  : COMPLETE
+============================================================*/
+
 USE fintech_credit_risk;
 
 -- Query 1: Dependency ratio vs. income — identify borrowers who, in
