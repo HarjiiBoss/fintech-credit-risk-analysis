@@ -1,0 +1,6 @@
+utilization_band,total_borrowers,delinquent_borrowers,delinquency_rate_pct
+"Invalid (>100%, flagged separately)",3321,1237,37.25
+"High (80-100%)",21812,4061,18.62
+"Elevated (50-80%)",16155,1741,10.78
+"Moderate (30-50%)",15830,926,5.85
+"Low (<30%)",92882,2061,2.22

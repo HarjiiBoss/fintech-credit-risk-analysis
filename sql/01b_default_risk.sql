@@ -79,3 +79,14 @@ SELECT
 FROM borrowers
 WHERE NumberOfTime30_59DaysPastDueNotWorse > 0;
 
+-- Comparison: 90+ day rate among borrowers with NO 30-59 day history
+SELECT
+    COUNT(*) AS borrowers_with_no_30_59_dpd,
+    SUM(CASE WHEN NumberOfTimes90DaysLate > 0 THEN 1 ELSE 0 END) AS has_90_plus_dpd,
+    ROUND(
+        SUM(CASE WHEN NumberOfTimes90DaysLate > 0 THEN 1 ELSE 0 END) / COUNT(*) * 100,
+        2
+    ) AS rate_pct
+FROM borrowers
+WHERE NumberOfTime30_59DaysPastDueNotWorse = 0;
+

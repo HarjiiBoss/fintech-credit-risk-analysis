@@ -24,7 +24,17 @@ FROM borrowers
 GROUP BY SeriousDlqin2yrs;
 
 -- Query 4: Outlier scan — age = 0
-SELECT COUNT(*) FROM borrowers WHERE age = 0;
+SELECT COUNT(*) 
+FROM borrowers 
+WHERE age = 0;
 
 -- Query 5: Outlier scan — utilization > 1 (already found 3,321 above, confirming here for the record)
-SELECT COUNT(*) FROM borrowers WHERE RevolvingUtilizationOfUnsecuredLines > 1;
+SELECT COUNT(*) 
+FROM borrowers 
+WHERE RevolvingUtilizationOfUnsecuredLines > 1;
+
+
+
+
+
+

@@ -1,0 +1,6 @@
+debt_ratio_band,total_borrowers,delinquent_borrowers,delinquency_rate_pct
+"Overexposed (100%+)",6489,685,10.56
+"High (50-100%)",20932,2077,9.92
+"Moderate (30-50%)",31142,1981,6.36
+"Low (<30%)",62560,3674,5.87
+"Extreme (>10, likely data error)",28877,1609,5.57
