@@ -1,4 +1,4 @@
-# Phase 0 — Environment Setup
+# Phase 0 — Project Setup & Data Ingestion
 
 **Date:** 2026-07-13  
 **Status:** Complete
