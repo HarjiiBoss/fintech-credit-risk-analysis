@@ -2,7 +2,7 @@
  Project : Fintech Credit Risk Analysis
  Phase   : 00 — Project Setup & Data Ingestion
  File    : 00_setup.sql
- Author  : HarjiiBoss
+ Author  : Taofeek Salami
  Purpose : Create the project database and prepare the
            borrower dataset for analysis.
  Status  : COMPLETE
