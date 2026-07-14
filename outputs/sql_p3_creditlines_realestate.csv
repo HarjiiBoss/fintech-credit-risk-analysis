@@ -1,0 +1,6 @@
+credit_lines_band,avg_real_estate_loans,total_borrowers,delinquent_borrowers,delinquency_rate_pct
+"0 lines",0.00,1888,484,25.64
+"1-3 lines",0.24,20162,1876,9.30
+"4-7 lines",0.77,51399,3063,5.96
+"8-15 lines",1.31,62725,3648,5.82
+"16+ lines",1.91,13826,955,6.91

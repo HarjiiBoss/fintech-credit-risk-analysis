@@ -1,0 +1,11 @@
+dependents_band,income_quartile,total_borrowers,delinquent_borrowers,delinquency_rate_pct
+"5+ dependents",Q2,151,27,17.88
+"3-4 dependents","Q1 (lowest)",1638,257,15.69
+"3-4 dependents",Q2,2375,310,13.05
+"1-2 dependents","Q1 (lowest)",7866,948,12.05
+"5+ dependents","Q1 (lowest)",118,13,11.02
+"5+ dependents",Q3,239,24,10.04
+"1-2 dependents",Q2,10370,969,9.34
+"3-4 dependents",Q3,3148,281,8.93
+"0 dependents","Q1 (lowest)",20667,1571,7.60
+"3-4 dependents","Income Unknown",942,64,6.79
