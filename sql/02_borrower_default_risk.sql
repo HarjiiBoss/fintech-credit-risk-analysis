@@ -2,7 +2,7 @@
  Project : Fintech Credit Risk Analysis
  Phase   : 02 — Borrower Default Risk
  File    : 02_borrower_default_risk.sql
- Author  : HarjiiBoss
+ Author  : Taofeek Salami
  Purpose : Segment borrowers by default risk using
            demographic and behavioral indicators to
            identify high-risk borrower profiles and
