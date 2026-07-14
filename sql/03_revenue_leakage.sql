@@ -1,7 +1,14 @@
--- Project 08: Fintech Credit Risk Analysis
--- Phase 3: Pillar 2 — Revenue Leakage
--- Purpose: Identify where the business is exposed to financial leakage
--- and overexposure risk
+/*============================================================
+ Project : Fintech Credit Risk Analysis
+ Phase   : 03 — Revenue Leakage
+ File    : 03_revenue_leakage.sql
+ Author  : HarjiiBoss
+ Purpose : Identify financially overexposed borrower
+           segments and estimate relative financial
+           exposure across the lending portfolio.
+ Status  : COMPLETE
+============================================================*/
+
 USE fintech_credit_risk;
 
 -- Query 1: Credit utilization vs. income — flag borrowers exceeding a
