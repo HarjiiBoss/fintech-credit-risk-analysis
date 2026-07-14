@@ -1,0 +1,5 @@
+income_quartile,total_borrowers,min_income,max_income,delinquent_borrowers,delinquency_rate_pct
+1,30068,0.00,3400.00,2768,9.21
+2,30067,3400.00,5400.00,2371,7.89
+3,30067,5400.00,8249.00,1827,6.08
+4,30067,8249.00,3008750.00,1391,4.63

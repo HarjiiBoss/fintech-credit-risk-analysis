@@ -1,0 +1,6 @@
+age_band,total_borrowers,delinquent_borrowers,delinquency_rate_pct
+20s,8820,1035,11.73
+30s,23183,2335,10.07
+40s,34377,2878,8.37
+50s,35301,2278,6.45
+60+,48319,1500,3.10
