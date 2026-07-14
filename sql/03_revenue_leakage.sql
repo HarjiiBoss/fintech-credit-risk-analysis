@@ -2,7 +2,7 @@
  Project : Fintech Credit Risk Analysis
  Phase   : 03 — Revenue Leakage
  File    : 03_revenue_leakage.sql
- Author  : HarjiiBoss
+ Author  : Taofeek Salami
  Purpose : Identify financially overexposed borrower
            segments and estimate relative financial
            exposure across the lending portfolio.
