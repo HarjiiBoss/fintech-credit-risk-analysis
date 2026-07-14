@@ -43,3 +43,8 @@ MODIFY COLUMN RevolvingUtilizationOfUnsecuredLines DOUBLE;
 
 -- Step 6: Verify row count (should return 150000)
 SELECT COUNT(*) FROM borrowers;
+
+-- Expected Result
+-- +--------+
+-- |150000 |
+-- +--------+
