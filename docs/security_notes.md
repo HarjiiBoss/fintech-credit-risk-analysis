@@ -2,23 +2,51 @@
 
 **Project:** Fintech Credit Risk Analysis (Project 08)
 
-## Issue: DB credentials hardcoded in notebook
+---
 
-**Found:** Phase 0, during initial data load into MySQL
-**Risk:** `notebooks/01_cleaning_eda.ipynb` initially contained the MySQL
-root password in plaintext inside the SQLAlchemy connection string. Since
-this repo is intended to go public on GitHub, committing the notebook
-as-is would have exposed the credential.
+## Issue: Database Credentials Hardcoded in Notebook
 
-**Fix applied (Phase 1):**
+**Identified:** Phase 0 — Initial data ingestion
+
+### Description
+
+During the initial MySQL data-loading process, the SQLAlchemy connection string in `notebooks/01_cleaning_eda.ipynb` contained the MySQL root password in plaintext.
+
+Because this repository is intended for public release on GitHub, committing the notebook in its original state would have exposed database credentials.
+
+### Risk Assessment
+
+- Plaintext database credentials stored in source code
+- Potential credential exposure through Git version history
+- Violation of secure credential management best practices
+
+### Remediation
+
+The issue was resolved during Phase 1 by implementing environment-based configuration.
+
 1. Installed `python-dotenv`
-2. Created a `.env` file at the project root containing `DB_PASSWORD`
-3. Added `.env` to `.gitignore` so it is never committed
-4. Updated the notebook to load the password via `os.getenv('DB_PASSWORD')`
-   instead of a hardcoded string
+2. Created a project-level `.env` file containing the database password
+3. Added `.env` to `.gitignore` to prevent accidental commits
+4. Replaced the hardcoded SQLAlchemy connection string with environment variables loaded via `os.getenv()`
 
-**Additional action taken:** MySQL root password rotated as a precaution,
-since the original password had briefly existed in plaintext in an
-editable file.
+### Additional Security Action
 
-**Status:** Resolved — no credentials present in any file tracked by git.
+As a precaution, the MySQL root password was rotated after the credential was removed to eliminate any potential exposure risk.
+
+### Current Status
+
+✅ No database credentials are stored in any tracked project files.
+
+✅ Database credentials are loaded securely through environment variables.
+
+✅ The repository is safe for public publication on GitHub.
+
+---
+
+## Security Best Practices Implemented
+
+- Environment variables used for sensitive configuration
+- `.env` excluded from version control via `.gitignore`
+- No secrets committed to Git history
+- Credentials separated from application code
+- Password rotated after remediation as a defense-in-depth measure
