@@ -113,6 +113,5 @@ Understanding these terms will help interpret the analyses and findings througho
 | `data/processed/` | Cleaned and feature-engineered datasets generated during analysis |
 | `sql/` | SQL scripts used for data exploration, segmentation, and business analysis |
 | `notebooks/` | Python notebooks covering ETL, data cleaning, feature engineering, risk scoring, and visualization |
-| `excel/` | Executive dashboard workbook designed for business stakeholders |
 | `tableau/` | Tableau workbook, dashboard assets, and Tableau Public link |
 | `outputs/` | Exported SQL query results, charts, figures, and intermediate analysis outputs |
