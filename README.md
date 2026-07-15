@@ -5,11 +5,27 @@
 
 ## Problem Statement
 
-Nigeria's digital lending industry has grown rapidly, expanding access to credit for a population historically shut out of traditional banking. But this growth has come with rising default rates, and most digital lenders cannot rely on traditional credit bureau records—the majority of borrowers have no bureau history at all. Instead, lenders depend on alternative signals such as transaction behavior, repayment patterns, credit utilization, and income ratios to assess borrower risk.
+Nigeria's digital lending industry has grown rapidly, expanding access to credit for a population historically underserved by traditional banking. However, this rapid growth has been accompanied by increasing default rates, while many borrowers remain outside the coverage of traditional credit bureaus. As a result, digital lenders increasingly rely on alternative behavioral signals—such as repayment history, credit utilization, debt burden, and income characteristics—to assess borrower risk.
 
-This project develops a bureau-independent credit risk segmentation pipeline using a public consumer-credit dataset as a proof of concept. While the dataset is not Nigerian, its alternative credit signals closely mirror those used by digital lenders to evaluate borrower risk where traditional credit histories are unavailable.
+This project develops a bureau-independent credit risk segmentation framework using the public **Give Me Some Credit** dataset as a proof of concept. Although the dataset originates from the United States, its behavioral credit variables closely resemble the alternative lending signals commonly used by Nigerian fintech lenders when traditional credit bureau information is unavailable.
 
-> **Note:** The complete business context and industry background will be incorporated from the project scoping document upon completion.
+The project demonstrates how SQL, Python, and Tableau can be combined to transform raw lending data into actionable business intelligence for borrower segmentation, financial exposure assessment, and operational decision-making.
+
+---
+
+## Executive Summary
+
+This project presents an end-to-end credit risk analytics solution covering the complete analytical workflow—from database design and ETL through feature engineering, business analysis, and executive reporting.
+
+Using behavioral lending data, the project:
+
+- Identifies borrowers most likely to default.
+- Develops a custom Behavioral Risk Score for borrower segmentation.
+- Builds an Exposure Index to estimate relative financial exposure where loan balance information is unavailable.
+- Evaluates operational inefficiencies that contribute to higher lending risk.
+- Delivers interactive Tableau dashboards for business stakeholders.
+
+The solution demonstrates how bureau-independent data can support lending decisions in emerging digital credit markets.
 
 ---
 
@@ -17,121 +33,178 @@ This project develops a bureau-independent credit risk segmentation pipeline usi
 
 ```text
 fintech-credit-risk-analysis/
+│
 ├── data/
 │   ├── raw/
 │   └── processed/
-├── sql/
+│
+├── docs/
+│   ├── documentation_index.md
+│   ├── phase_00_project_setup.md
+│   ├── phase_01_data_cleaning_eda.md
+│   ├── phase_02_borrower_default_risk.md
+│   ├── phase_03_revenue_leakage.md
+│   ├── phase_04_operational_inefficiency.md
+│   ├── data_dictionary.md
+│   ├── project_glossary.md
+│   ├── security_notes.md
+│   └── tableau_blueprint.md
+│
 ├── notebooks/
+├── outputs/
+├── sql/
+│
 ├── tableau/
 │   ├── workbook/
 │   └── screenshots/
-├── outputs/
-└── README.md
+│
+├── README.md
+└── LICENSE
 ```
 
 ---
 
 ## Data
 
-- **Source:** Kaggle — **Give Me Some Credit** (150,000 records)
-- **Dataset Type:** Consumer credit risk dataset
-- **Methodological Note:** Bureau-linked Nigerian lending datasets with the necessary feature granularity are not publicly available. This dataset's features—including credit utilization, repayment history, debt ratio, monthly income, open credit lines, age, and dependents—closely mirror the bureau-independent behavioral signals that Nigerian digital lenders rely on when traditional credit bureau information is unavailable.
+| Attribute | Description |
+|-----------|-------------|
+| **Source** | Kaggle — *Give Me Some Credit* |
+| **Original Records** | 150,000 borrowers |
+| **Processed Records** | 149,999 borrowers |
+| **Dataset Type** | Consumer Credit Risk |
+| **Target Variable** | Serious delinquency within two years (90+ days past due) |
+
+### Methodological Note
+
+Public Nigerian lending datasets containing borrower-level repayment behavior are not currently available. Therefore, this project uses the **Give Me Some Credit** dataset as a bureau-independent proof of concept.
+
+The analysis focuses on behavioral lending patterns—including repayment history, credit utilization, debt burden, and income characteristics—rather than absolute monetary values, making the methodology transferable to digital lending environments where traditional credit histories are limited.
 
 ---
 
-## Key Questions
+## Business Questions
 
-This project is designed to answer three business questions:
+This project answers three key business questions:
 
 1. **Which borrowers are most likely to default, and what are the earliest warning signals?**
-2. **Where is the lending business exposed to financial leakage and overexposure risk?**
-3. **Which operational patterns indicate avoidable lending risk and opportunities to improve approval decisions?**
+2. **Where is the lending portfolio exposed to financial leakage and overexposure risk?**
+3. **Which operational patterns indicate opportunities to improve lending decisions and reduce future defaults?**
 
 ---
 
 ## Methodology
 
-*This section will be completed after implementation.*
+The project follows a five-phase analytical workflow:
 
-It will document:
+```text
+Raw Dataset
+      │
+      ▼
+Project Setup & Database Design
+      │
+      ▼
+Python ETL
+      │
+      ▼
+Data Cleaning & Exploratory Analysis
+      │
+      ▼
+SQL Business Analysis
+      │
+      ▼
+Behavioral Risk Scoring
+      │
+      ▼
+Financial Exposure Analysis
+      │
+      ▼
+Operational Risk Assessment
+      │
+      ▼
+Interactive Tableau Dashboard
+```
 
-- Data loading and cleaning strategy
-- Exploratory Data Analysis (EDA)
-- SQL-based borrower segmentation
-- Behavioral risk scoring methodology
-- Financial exposure estimation approach
-- Operational risk assessment
-- Key analytical assumptions and limitations
+The workflow combines:
 
----
-
-## Pillar Findings
-
-### Pillar 1 — Borrower Default Risk
-
-*Findings will be added after analysis.*
-
-This section will summarize:
-
-- Borrower default rates by segment
-- High-risk borrower profile
-- Behavioral risk scoring results
-- Delinquency progression analysis
-- Early warning indicators
-
----
-
-### Pillar 2 — Revenue Leakage
-
-*Findings will be added after analysis.*
-
-This section will summarize:
-
-- Financial exposure by borrower segment
-- Bad debt rate analysis
-- Credit utilization patterns
-- Overexposure concentration
-- Relative revenue risk
+- MySQL database design and SQL business analysis
+- Python ETL, feature engineering, and statistical analysis
+- Behavioral Risk Score development
+- Exposure Index construction
+- Executive dashboard development using Tableau
 
 ---
 
-### Pillar 3 — Operational Inefficiency
+## Key Findings
 
-*Findings will be added after analysis.*
+### Borrower Default Risk
 
-This section will summarize:
-
-- Approval process risk flags
-- Credit line proliferation analysis
-- Borrower demographic risk patterns
-- Operational improvement opportunities
+- Borrowers aged **20–39** consistently exhibited the highest default rates.
+- A first **30–59 day delinquency** was associated with a **5.7× higher likelihood** of reaching 90+ days past due.
+- A Behavioral Risk Score successfully segmented borrowers into **Low, Medium, High, and Critical** risk tiers with clear monotonic increases in observed default rates.
+- Placeholder delinquency codes (96/98) emerged as the strongest single early-warning indicator, with a **54.65%** observed default rate.
 
 ---
 
-## Tools
+### Revenue Leakage
 
-| Tool | Role |
-|------|------|
-| **SQL (MySQL)** | Data storage, segmentation queries, aggregation, and business analysis |
-| **Python (Pandas, NumPy)** | Data cleaning, behavioral risk scoring, feature engineering, and analysis |
-| **Matplotlib / Seaborn** | Exploratory and explanatory visualizations |
-| **Tableau Public** | Interactive business intelligence dashboard |
-| **Jupyter Notebook** | End-to-end analytical workflow and documentation |
-| **GitHub** | Version control and project documentation |
+- Developed a custom **Exposure Index** to estimate relative borrower exposure in the absence of loan balance information.
+- Identified and corrected two significant data quality issues affecting Debt Ratio and Credit Utilization.
+- Exposure Tier produced a **9.5× spread** in observed default rates between Low and Critical exposure groups.
+- Combining Behavioral Risk Tier with Exposure Tier identified the highest-risk borrower segments within the portfolio.
+
+---
+
+### Operational Inefficiency
+
+- Younger, lower-income borrowers consistently demonstrated elevated default risk.
+- Borrowers with zero active credit lines showed disproportionately high default rates, highlighting potential underwriting concerns.
+- Portfolio segmentation identified opportunities to strengthen approval criteria and improve lending efficiency.
+
+---
+
+## Tools & Technologies
+
+| Tool | Purpose |
+|------|---------|
+| **MySQL** | Database design, SQL analysis, borrower segmentation |
+| **Python (Pandas & NumPy)** | ETL, data cleaning, feature engineering, risk scoring |
+| **Matplotlib & Seaborn** | Exploratory and explanatory visualizations |
+| **Jupyter Notebook** | End-to-end analytical workflow |
+| **Tableau Public** | Interactive business intelligence dashboards |
+| **Git & GitHub** | Version control and project documentation |
 
 ---
 
 ## Deliverables
 
-Upon completion, this repository will contain:
+This repository includes:
 
-- SQL scripts for borrower segmentation and business analysis
-- Annotated Jupyter Notebook documenting the full analytical workflow
-- Cleaned and processed datasets
-- Tableau Public interactive dashboard
-- Comprehensive project documentation
-- Portfolio-ready README
-- Dashboard screenshots and shareable Tableau link
+- SQL scripts for database creation and business analysis
+- Python notebooks covering ETL, feature engineering, and analytical workflows
+- Cleaned and feature-engineered datasets
+- Interactive Tableau dashboard
+- Dashboard screenshots
+- Comprehensive technical documentation
+- Portfolio-ready GitHub repository
+
+---
+
+## Documentation
+
+Comprehensive project documentation is available in the **docs/** directory.
+
+| Document | Description |
+|----------|-------------|
+| `documentation_index.md` | Documentation overview and navigation |
+| `phase_00_project_setup.md` | Project setup and data ingestion |
+| `phase_01_data_cleaning_eda.md` | Data cleaning and exploratory analysis |
+| `phase_02_borrower_default_risk.md` | Borrower default risk analysis |
+| `phase_03_revenue_leakage.md` | Revenue leakage analysis |
+| `phase_04_operational_inefficiency.md` | Operational inefficiency analysis |
+| `data_dictionary.md` | Original dataset fields and engineered variables |
+| `project_glossary.md` | Credit risk and fintech terminology |
+| `security_notes.md` | Security practices and environment configuration |
+| `tableau_blueprint.md` | Dashboard architecture and worksheet mapping |
 
 ---
 
@@ -139,23 +212,71 @@ Upon completion, this repository will contain:
 
 1. Clone this repository.
 2. Download the **Give Me Some Credit** dataset from Kaggle.
-3. Place the raw dataset inside the `data/raw/` directory.
-4. Create the MySQL database and import the dataset.
-5. Execute the SQL scripts inside the `sql/` folder.
-6. Run the notebooks in the `notebooks/` directory in sequence.
-7. Open the Tableau workbook in the `tableau/` folder or view the published Tableau Public dashboard *(link to be added upon completion).*
+3. Place the dataset inside `data/raw/`.
+4. Execute `sql/00_setup.sql` to create the database.
+5. Run the notebooks sequentially:
+   - `01_cleaning_eda.ipynb`
+   - `02_risk_scoring.ipynb`
+   - `03_exposure_analysis.ipynb`
+   - `04_operational_analysis.ipynb`
+6. Open the Tableau workbook inside the `tableau/` directory or view the published Tableau Public dashboard.
 
 ---
 
 ## Dashboard
 
-The completed project will include an interactive Tableau Public dashboard featuring:
+The project includes an interactive **Tableau Public dashboard** designed as a four-page analytical application.
 
-- **Borrower Default Risk**
-- **Revenue Leakage**
-- **Operational Inefficiency**
+### Dashboard Pages
 
-Dashboard screenshots and the public Tableau link will be added after project completion.
+#### 1. Executive Overview
+A high-level summary of portfolio performance featuring:
+
+- Portfolio KPI cards
+- Risk distribution overview
+- Exposure summary
+- Operational health indicators
+- Navigation to analytical dashboards
+
+#### 2. Borrower Default Risk
+Analyze borrower behavior and identify early warning signals through:
+
+- Risk tier distribution
+- Default rates by borrower segment
+- Behavioral risk scoring
+- Delinquency progression analysis
+- High-risk borrower profiles
+
+#### 3. Revenue Leakage
+Evaluate financial exposure and revenue risk using:
+
+- Exposure Index distribution
+- Credit utilization analysis
+- Debt ratio segmentation
+- Exposure Tier performance
+- Combined Risk × Exposure analysis
+
+#### 4. Operational Inefficiency
+Identify lending process improvement opportunities through:
+
+- Approval calibration analysis
+- Household financial strain
+- Credit portfolio composition
+- Operational risk indicators
+- Borrower demographic comparisons
+
+### Dashboard Features
+
+- Interactive global filters
+- Cross-dashboard navigation buttons
+- Dynamic KPI cards
+- Drill-down analysis
+- Consistent visual design across all dashboards
+- Executive-ready business insights
+
+**Tableau Public:** *(Link will be added after publication.)*
+
+**Screenshots:** Available in `tableau/screenshots/`.
 
 ---
 
@@ -163,4 +284,6 @@ Dashboard screenshots and the public Tableau link will be added after project co
 
 This project is intended for educational and portfolio purposes.
 
-The original dataset is provided by Kaggle under its applicable terms of use. All analysis, SQL scripts, notebooks, dashboards, and documentation in this repository are original work created for this project.
+The original **Give Me Some Credit** dataset is provided by Kaggle under its applicable terms of use.
+
+All SQL scripts, Python notebooks, feature engineering, documentation, dashboards, and analytical methodologies contained in this repository are original work created by **Taofeek Salami**.
