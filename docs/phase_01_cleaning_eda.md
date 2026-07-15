@@ -130,4 +130,3 @@ Age and number of dependents show only a mild negative correlation (**−0.22**)
 - ✅ Generated exploratory visualizations
 - ✅ Established baseline findings for Phase 2
 
-**Status:** ✅ Complete
