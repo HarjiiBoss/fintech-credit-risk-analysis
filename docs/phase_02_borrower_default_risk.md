@@ -190,4 +190,3 @@ This validates the behavioral risk scoring methodology.
 - ✅ Risk-tier validation
 - ✅ Export of analytical datasets
 
-**Status:** ✅ Complete
