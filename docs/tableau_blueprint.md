@@ -9,7 +9,7 @@ This document serves as the implementation guide for the Tableau dashboards in t
 ```
 Tableau Workbook
 │
-├── Overview Dashboard
+├── Executive Overview Dashboard
 ├── Borrower Default Risk Dashboard
 ├── Revenue Leakage Dashboard
 └── Operational Inefficiency Dashboard
