@@ -114,7 +114,7 @@ Throughout the project, all documentation follows these principles:
 | Resource | Description |
 |----------|-------------|
 | `README.md` | Project overview, business problem, methodology, key findings, deliverables, and reproduction guide. |
-| `LICENSE` *(optional)* | Open-source license governing project usage and distribution. |
+| `LICENSE` | Open-source license governing project usage and distribution. |
 
 ---
 
