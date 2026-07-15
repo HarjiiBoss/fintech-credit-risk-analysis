@@ -24,6 +24,8 @@ fintech-credit-risk-analysis/
 ├── notebooks/
 ├── excel/
 ├── tableau/
+│   ├── workbook/
+│   └── screenshots/
 ├── outputs/
 └── README.md
 ```
@@ -114,7 +116,6 @@ This section will summarize:
 | **SQL (MySQL)** | Data storage, segmentation queries, aggregation, and business analysis |
 | **Python (Pandas, NumPy)** | Data cleaning, behavioral risk scoring, feature engineering, and analysis |
 | **Matplotlib / Seaborn** | Exploratory and explanatory visualizations |
-| **Excel** | Executive summary dashboard and Pivot Table reporting |
 | **Tableau Public** | Interactive business intelligence dashboard |
 | **Jupyter Notebook** | End-to-end analytical workflow and documentation |
 | **GitHub** | Version control and project documentation |
@@ -128,7 +129,6 @@ Upon completion, this repository will contain:
 - SQL scripts for borrower segmentation and business analysis
 - Annotated Jupyter Notebook documenting the full analytical workflow
 - Cleaned and processed datasets
-- Excel executive summary dashboard
 - Tableau Public interactive dashboard
 - Comprehensive project documentation
 - Portfolio-ready README
