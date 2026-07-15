@@ -223,7 +223,7 @@ Evaluate lending process weaknesses and identify approval characteristics associ
 Every dashboard includes consistent navigation buttons positioned at the top of the page.
 
 ```
-Overview
+Executive Overview
 
 Borrower Default Risk
 
