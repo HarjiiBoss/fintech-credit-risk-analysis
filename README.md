@@ -22,7 +22,6 @@ fintech-credit-risk-analysis/
 │   └── processed/
 ├── sql/
 ├── notebooks/
-├── excel/
 ├── tableau/
 │   ├── workbook/
 │   └── screenshots/
