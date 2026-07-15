@@ -1,9 +1,9 @@
-# Phase 4 — Pillar 3: Operational Inefficiency
+# Phase 4 — Operational Inefficiency
 
-**Date:** 2026-07-14
-**Status:** Complete
+**Date:** 2026-07-14  
+**Status:** Complete  
 **Core question:** Where does the lending process expose the business to
-avoidable cost or risk?
+avoidable cost or risk?  
 **Note:** This pillar was fully SQL-driven per original project scope —
 no new engineered columns, no dataframe changes; existing
 `cs_training_exposure_scored.csv` remains the current dataset.
