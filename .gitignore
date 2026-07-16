@@ -1,3 +1,38 @@
+# ==========================================================
+# Environment Variables
+# ==========================================================
 .env
+
+# ==========================================================
+# Dataset Files
+# ==========================================================
+# Raw datasets are downloaded separately from Kaggle
 data/raw/*.csv
-data/processed/*.csv
+
+# Processed datasets are intentionally tracked because they
+# are project outputs used by Tableau and documentation.
+# Uncomment the line below if you ever decide to ignore them.
+# data/processed/*.csv
+
+# ==========================================================
+# macOS
+# ==========================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ==========================================================
+# Python
+# ==========================================================
+__pycache__/
+*.py[cod]
+
+# ==========================================================
+# Jupyter
+# ==========================================================
+.ipynb_checkpoints/
+
+# ==========================================================
+# VS Code
+# ==========================================================
+.vscode/
