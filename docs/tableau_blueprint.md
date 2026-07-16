@@ -344,32 +344,111 @@ These fields should be used directly from the processed dataset.
 
 ---
 
-## Typography
+## Colour Palette
 
-| Element | Font Size |
-|----------|-----------|
-| Dashboard Title | 30–34 pt |
-| Dashboard Subtitle | 16–18 pt |
-| KPI Value | 34–42 pt |
-| KPI Label | 13–16 pt |
-| Chart Title | 18–22 pt |
-| Axis Labels | 11–12 pt |
-| Tooltip | 12 pt |
+| Purpose | Colour | Hex Code |
+|---|---|---|
+| Primary Brand | Dark Navy | `#1F3864` |
+| KPI Highlight | Gold | `#C9A84C` |
+| Critical Risk | Red | `#C00000` |
+| Secondary Background | Light Navy | `#DAE3F3` |
+| Moderate Risk | Light Gold | `#FDF2D0` |
+| High Risk Row | Light Red | `#FADBD8` |
+| Secondary Elements | Light Grey | `#D9D9D9` |
+| Primary Text | Dark Grey | `#262626` |
+| Secondary Text | Muted Blue-Grey | `#A9B4C2` |
+| Background | White | `#FFFFFF` |
 
 ---
 
-## Color Palette
+## Typography
 
-| Purpose | Color |
-|----------|--------|
-| Primary Navy | #243E73 |
-| Gold Accent | #D4AF37 |
-| Critical | #C00000 |
-| High | #D6B04C |
-| Medium | #D9D9D9 |
-| Low | #243E73 |
-| Background | #F8F8F8 |
-| Insight Box | #F7D7D4 |
+| Element | Font Size | Weight |
+|---|---:|---|
+| Dashboard Title | 14 pt | Bold |
+| Dashboard Subtitle | 9 pt | Regular |
+| KPI Value | 36 pt | Bold |
+| KPI Label | 11 pt | Bold |
+| Chart Title | 10 pt | Bold |
+| Chart Axis Labels | 8 pt | Regular |
+| Chart Data Labels | 9 pt | Regular |
+| Insight Box Title | 11 pt | Bold |
+| Insight Box Text | 9 pt | Regular |
+| Footer | 8 pt | Regular |
+
+---
+
+## Layout Standards
+
+| Component | Standard |
+|---|---|
+| Sheet background | White |
+| Chart background | No fill |
+| Dashboard title | Left aligned |
+| Subtitle | Left aligned |
+| Visual hierarchy | KPI Cards → Charts → Business Insights → Recommendations |
+| KPI internal padding | 8–10 pt |
+| KPI corner radius | 6 pt |
+| Footer alignment | Right aligned |
+| Dashboard spacing | Consistent alignment and margins across all pages |
+
+---
+
+## KPI Card Standards
+
+| Element | Standard |
+|---|---|
+| Background | Dark Navy |
+| KPI Value | Gold |
+| KPI Label | Muted Blue-Grey |
+| Shape | Rounded rectangle |
+| Border | None |
+| Purpose | Highlight headline business metrics consistently across dashboards |
+
+---
+
+## Chart Standards
+
+| Element | Standard |
+|---|---|
+| Background | No fill |
+| Border | None |
+| Gridlines | Removed |
+| Primary highlight | Gold |
+| Highest-risk category | Red |
+| Secondary categories | Light Grey |
+| Stable category | Dark Navy |
+| Data labels | Enabled |
+| Legends | Removed where redundant |
+| Axes | Removed when unnecessary |
+| Chart titles | Dark Navy, Bold |
+
+---
+
+## Insight Panel Standards
+
+Each dashboard contains a dedicated insight panel summarising the most important business findings.
+
+| Element | Standard |
+|---|---|
+| Background | Dark Navy |
+| Heading | Gold |
+| Body text | Muted Blue-Grey |
+| Content | Three concise evidence-based business insights |
+
+---
+
+## Recommendation Panel Standards
+
+Each supporting dashboard concludes with actionable recommendations linked directly to the analytical findings.
+
+| Element | Standard |
+|---|---|
+| Background | White |
+| Border | Light Grey |
+| Heading | Dark Navy |
+| Body text | Dark Grey |
+| Content | Practical business actions supported by dashboard evidence |
 
 ---
 
