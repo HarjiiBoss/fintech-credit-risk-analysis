@@ -1,4 +1,4 @@
-# Phase 3 — Revenue Leakage
+# Phase 3 — Financial Exposure Risk
 
 **Date:** 2026-07-14  
 **Status:** ✅ Complete  
