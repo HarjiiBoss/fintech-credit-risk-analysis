@@ -11,7 +11,7 @@ Tableau Workbook
 │
 ├── Executive Overview Dashboard
 ├── Borrower Default Risk Dashboard
-├── Revenue Leakage Dashboard
+├── Financial Exposure Risk Dashboard
 └── Operational Inefficiency Dashboard
 ```
 
@@ -142,7 +142,7 @@ Identify which borrower segments have the highest probability of default and hig
 
 ---
 
-# Dashboard 3 — Revenue Leakage
+# Dashboard 3 — Financial Exposure Risk
 
 ## Purpose
 
@@ -227,7 +227,7 @@ Executive Overview
 
 Borrower Default Risk
 
-Revenue Leakage
+Financial Exposure Risk
 
 Operational Inefficiency
 ```
@@ -244,8 +244,6 @@ Recommended order:
 
 ```
 Age Band
-
-Income Quartile
 
 Risk Tier
 
