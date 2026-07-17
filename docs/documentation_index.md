@@ -19,7 +19,7 @@ The documentation is organized to mirror the project's analytical workflow. Each
 | `phase_00_project_setup.md` | Documents the project environment setup, database creation, data ingestion process, ETL workflow, and issues encountered during initial implementation. |
 | `phase_01_data_cleaning_eda.md` | Covers data quality assessment, exploratory data analysis (EDA), cleaning decisions, feature preparation, and key observations before modeling. |
 | `phase_02_borrower_default_risk.md` | Documents borrower segmentation, behavioral risk scoring methodology, default risk analysis, and identification of early warning signals. |
-| `phase_03_revenue_leakage.md` | Explains the Exposure Index methodology, financial exposure analysis, revenue leakage assessment, and validation of exposure-based borrower segmentation. |
+| `phase_03_financial_exposure_risk.md` | Explains the Exposure Index methodology, financial exposure analysis, revenue leakage assessment, and validation of exposure-based borrower segmentation. |
 | `phase_04_operational_inefficiency.md` | Evaluates operational lending inefficiencies, approval quality, portfolio characteristics, and opportunities to improve lending decisions. |
 
 ---
@@ -51,7 +51,7 @@ Borrower Default Risk Analysis
         │
         ▼
 Phase 03
-Revenue Leakage Analysis
+Financial Exposure Risk Analysis
         │
         ▼
 Phase 04
@@ -87,7 +87,7 @@ For the best understanding of the project, review the documentation in the follo
 2. `phase_00_project_setup.md`
 3. `phase_01_data_cleaning_eda.md`
 4. `phase_02_borrower_default_risk.md`
-5. `phase_03_revenue_leakage.md`
+5. `phase_03_financial_exposure_risk.md`
 6. `phase_04_operational_inefficiency.md`
 7. `data_dictionary.md`
 8. `project_glossary.md`
