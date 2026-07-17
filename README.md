@@ -43,7 +43,7 @@ fintech-credit-risk-analysis/
 │   ├── phase_00_project_setup.md
 │   ├── phase_01_data_cleaning_eda.md
 │   ├── phase_02_borrower_default_risk.md
-│   ├── phase_03_revenue_leakage.md
+│   ├── phase_03_financial_exposure_risk.md
 │   ├── phase_04_operational_inefficiency.md
 │   ├── data_dictionary.md
 │   ├── project_glossary.md
@@ -145,7 +145,7 @@ The workflow combines:
 
 ---
 
-### Revenue Leakage
+### Financial Exposure Risk
 
 - Developed a custom **Exposure Index** to estimate relative borrower exposure in the absence of loan balance information.
 - Identified and corrected two significant data quality issues affecting Debt Ratio and Credit Utilization.
@@ -199,7 +199,7 @@ Comprehensive project documentation is available in the **docs/** directory.
 | `phase_00_project_setup.md` | Project setup and data ingestion |
 | `phase_01_data_cleaning_eda.md` | Data cleaning and exploratory analysis |
 | `phase_02_borrower_default_risk.md` | Borrower default risk analysis |
-| `phase_03_revenue_leakage.md` | Revenue leakage analysis |
+| `phase_03_financial_exposure_risk.md` | Financial Exposure Risk analysis |
 | `phase_04_operational_inefficiency.md` | Operational inefficiency analysis |
 | `data_dictionary.md` | Original dataset fields and engineered variables |
 | `project_glossary.md` | Credit risk and fintech terminology |
@@ -247,7 +247,7 @@ Analyze borrower behavior and identify early warning signals through:
 - Delinquency progression analysis
 - High-risk borrower profiles
 
-#### 3. Revenue Leakage
+#### 3. Financial Exposure Risk
 Evaluate financial exposure and revenue risk using:
 
 - Exposure Index distribution
