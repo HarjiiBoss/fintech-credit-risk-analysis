@@ -1,7 +1,7 @@
 /*============================================================
  Project : Fintech Credit Risk Analysis
- Phase   : 03 — Revenue Leakage
- File    : 03_revenue_leakage.sql
+ Phase   : 03 — Financial Exposure Risk
+ File    : 03_financial_exposure_risk.sql
  Author  : Taofeek Salami
  Purpose : Identify financially overexposed borrower
            segments and estimate relative financial
@@ -15,7 +15,7 @@ USE fintech_credit_risk;
 -- Query 1: Credit Utilization Analysis
 -- Objective:
 -- Segment borrowers by revolving credit utilization to identify
--- repayment-capacity risk and potential revenue leakage.
+-- repayment-capacity risk and potential financial exposure risk.
 --
 -- Assumption:
 -- Utilization >= 80% is treated as elevated risk based on
@@ -157,7 +157,7 @@ LIMIT 5;
 
 -- ============================================================
 -- End of Phase 03
--- Revenue Leakage
+-- Financial Exposure Risk
 --
 -- Completion Checklist
 -- [✓] Credit utilization segmentation
