@@ -481,6 +481,26 @@ Fintech Credit Risk Analysis • Taofeek Salami
 
 ---
 
+## Tooltip Steps — How to Add Them in Tableau
+
+For each worksheet:
+
+1. Open the worksheet.
+2. On the **Marks** card, click **Tooltip**.
+3. Replace the default tooltip text with your custom explanation.
+4. Use **Insert** in the tooltip editor to add dynamic field values.
+5. Preview the tooltip by hovering over the mark.
+
+For KPI sheets, the tooltip should explain:
+- What the metric measures
+- The population or denominator
+- The business significance
+- Any important methodological limitation
+
+Keep tooltip text concise. The dashboard should provide the headline; the tooltip should provide context.
+
+---
+
 # Development Principles
 
 - Use the processed exposure dataset as the primary data source.
