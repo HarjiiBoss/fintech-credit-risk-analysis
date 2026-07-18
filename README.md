@@ -333,9 +333,7 @@ Identifies structural borrower patterns that may indicate opportunities to impro
 - Consistent visual design across all four dashboards
 - Executive-ready insight and recommendation panels
 
-**Tableau Public:** (Link will be added after publication.)
-
-**Screenshots:** Available in tableau/screenshots/.
+**Tableau Public:** [View the interactive dashboard](https://public.tableau.com/views/FintechCreditRiskAnalysisDashboard/DB01-ExecutiveOverview)
 
 ---
 
