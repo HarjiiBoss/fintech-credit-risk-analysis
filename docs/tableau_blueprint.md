@@ -15,7 +15,7 @@ Tableau Workbook
 └── Operational Inefficiency Dashboard
 ```
 
-Each dashboard uses a **1920 × 1080** fixed-size layout for consistent presentation across desktop displays.
+Each dashboard uses a **1600 × 900** fixed-size layout for consistent presentation across desktop displays.
 
 ---
 
