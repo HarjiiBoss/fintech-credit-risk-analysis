@@ -1,8 +1,8 @@
 # Phase 5 — Dashboard Design & Documentation
 
-**Tool:** Tableau Public
-**Workbook:** `Fintech_Credit_Risk_Analysis.twbx`
-**Dashboards:** 4
+**Tool:** Tableau Public  
+**Workbook:** `Fintech_Credit_Risk_Analysis.twbx`  
+**Dashboards:** 4  
 **Status:** Complete ✅
 
 ---
