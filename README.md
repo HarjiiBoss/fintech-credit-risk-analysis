@@ -37,6 +37,37 @@ The result is a bureau-independent credit risk framework designed to demonstrate
 
 ---
 
+# 🖥️ Dashboard Preview
+
+## Executive Overview
+
+![Executive Overview Dashboard](tableau/screenshots/01_executive_overview.png)
+
+Provides a high-level view of portfolio default risk, behavioral risk tiers, financial exposure, and the compounding relationship between borrower risk and exposure.
+
+---
+
+## Borrower Default Risk
+
+![Borrower Default Risk Dashboard](tableau/screenshots/02_borrower_default_risk.png)
+
+Identifies the borrower segments most likely to default and examines behavioral early-warning signals across delinquency history, age, income, and risk tiers.
+
+---
+
+## Financial Exposure Risk
+
+![Financial Exposure Risk Dashboard](tableau/screenshots/03_financial_exposure_risk.png)
+
+Evaluates relative borrower exposure using credit utilization, debt burden, and the Exposure Index, while examining whether exposure adds predictive value beyond behavioral risk history.
+
+---
+
+## Operational Inefficiency
+
+![Operational Inefficiency Dashboard](tableau/screenshots/04_operational_inefficiency.png)
+
+Examines structural borrower characteristics—including credit line count, income, age, and household dependency—to identify opportunities to strengthen underwriting and improve lending decisions.
 
 ---
 
