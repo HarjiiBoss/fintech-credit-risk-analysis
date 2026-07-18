@@ -66,12 +66,11 @@ A consistent visual design system was applied across all dashboard pages to impr
 | Primary Brand | Dark Navy | `#1F3864` |
 | KPI Highlight | Gold | `#C9A84C` |
 | Critical Risk | Red | `#C00000` |
-| Secondary Background | Light Navy | `#DAE3F3` |
-| Moderate Risk | Light Gold | `#FDF2D0` |
-| High Risk Row | Light Red | `#FADBD8` |
+| High/Moderate Risk | Gold | `#FDF2D0` |
 | Secondary Elements | Light Grey | `#D9D9D9` |
-| Data Limitation / Indeterminate | Muted Blue-Grey | `#A9B4C2` |
+| Data Limitation / Indeterminate | Light Navy | `#DAE3F3` | 
 | Primary Text | Dark Grey | `#262626` |
+| Insight & Recommendation Text | Muted Blue-Grey | `#A9B4C2` |
 | Background | White | `#FFFFFF` |
 
 Data Limitation / Indeterminate is used specifically for values affected by known data limitations, such as borrowers with missing income who cannot be reliably scored on the Exposure Index.
@@ -87,9 +86,9 @@ This visually distinguishes:
 
 | Element | Font Size | Weight |
 |---|---:|---|
-| Dashboard Title | 14 pt | Bold |
-| Dashboard Subtitle | 9 pt | Regular |
-| KPI Value | 36 pt | Bold |
+| Dashboard Title | 16 pt | Bold |
+| Dashboard Subtitle | 10 pt | Regular |
+| KPI Value | 28 pt | Bold |
 | KPI Label | 11 pt | Bold |
 | Chart Title | 10 pt | Bold |
 | Chart Axis Labels | 8 pt | Regular |
@@ -104,9 +103,9 @@ This visually distinguishes:
 
 | Component | Standard |
 |---|---|
-| Canvas size | Fixed, 1920 × 1080 |
+| Canvas size | Fixed, 1600 × 900 |
 | Sheet background | White |
-| Chart background | No fill |
+| Chart background | No fill or Light Grey |
 | Dashboard title | Left aligned |
 | Subtitle | Left aligned |
 | Visual hierarchy | KPI Cards → Charts → Insights → Recommendations |
@@ -134,14 +133,14 @@ This visually distinguishes:
 
 | Element | Standard |
 |---|---|
-| Background | No fill |
+| Background | No fill or Light Grey |
 | Border | None |
 | Gridlines | Removed |
 | Primary highlight | Gold |
 | Highest-risk category | Red |
 | Secondary categories | Light Grey |
 | Stable / lowest-risk category | Dark Navy |
-| Data-limitation category | Muted Blue-Grey |
+| Data-limitation category | Light Navy |
 | Data labels | Enabled where useful |
 | Legends | Removed where redundant |
 | Axes | Removed when unnecessary |
