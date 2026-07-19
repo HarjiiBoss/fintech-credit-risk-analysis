@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taofeek Salami — Fintech Credit Risk Analysis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #13161e;
+      --surface2: #1a1e28;
+      --border: #252a38;
+      --accent: #c8a96e;
+      --accent2: #7eb8c9;
+      --text: #e8e4dc;
+      --muted: #7a7f8e;
+      --green: #6dbf8a;
+      --red: #e07b6a;
+      --purple: #b48ecf;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── HERO ── */
+    header {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 8vw 4rem;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: -10%;
+      right: -5%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(224,123,106,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    h1 .accent { color: var(--accent); }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+
+    .meta-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .meta-value {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+    }
+
+    .hero-bio {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.35s ease both;
+    }
+
+    .badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      border: 1px solid;
+    }
+
+    .badge-sql     { color: var(--accent);  border-color: rgba(200,169,110,0.3); background: rgba(200,169,110,0.07); }
+    .badge-mysql   { color: var(--accent2); border-color: rgba(126,184,201,0.3); background: rgba(126,184,201,0.07); }
+    .badge-python  { color: #7eb8c9;        border-color: rgba(126,184,201,0.3); background: rgba(126,184,201,0.07); }
+    .badge-tableau { color: #e8a87c;        border-color: rgba(232,168,124,0.3); background: rgba(232,168,124,0.07); }
+    .badge-complete{ color: var(--green);   border-color: rgba(109,191,138,0.3); background: rgba(109,191,138,0.07); }
+
+    .hero-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+
+    .hero-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .hero-link::before { content: '→'; color: var(--accent); }
+    .hero-link:hover { color: var(--accent); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 8vw;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      animation: fadeUp 0.6s 0.6s ease both;
+    }
+
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--muted);
+    }
+
+    /* ── LAYOUT ── */
+    main { position: relative; z-index: 1; }
+    section { padding: 5rem 8vw; border-top: 1px solid var(--border); }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    /* ── KPI GRID ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+
+    .kpi-card {
+      background: var(--surface);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .kpi-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .kpi-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .kpi-value.danger  { color: var(--red); }
+    .kpi-value.warning { color: #e8a87c; }
+    .kpi-value.good    { color: var(--green); }
+
+    .kpi-context {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--muted);
+    }
+
+    /* ── DASHBOARD PREVIEW ── */
+    .dashboard-wrap {
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 0.6rem;
+    }
+
+    .dashboard-wrap img {
+      width: 100%;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .dashboard-wrap:hover img { transform: scale(1.01); }
+
+    .dashboard-caption {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-align: center;
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── FINDINGS ── */
+    .findings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .finding-card {
+      background: var(--surface);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .finding-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .finding-card:hover { background: var(--surface2); }
+    .finding-card:hover::before { transform: scaleX(1); }
+
+    .finding-category {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .finding-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .finding-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .finding-body strong { color: var(--accent); font-weight: 500; }
+    .finding-body .danger { color: var(--red); font-weight: 500; }
+    .finding-body .good   { color: var(--green); font-weight: 500; }
+
+    .finding-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--border);
+      line-height: 1;
+      margin-top: auto;
+    }
+
+    /* ── INSIGHTS (Recommendations) ── */
+    .insights-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .insight-item {
+      background: var(--surface);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 2rem;
+      transition: background 0.2s;
+    }
+
+    .insight-item:hover { background: var(--surface2); }
+
+    .insight-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .insight-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .insight-category {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .insight-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.8rem;
+    }
+
+    .insight-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .insight-text strong { color: var(--accent); font-weight: 500; }
+    .insight-text .danger { color: var(--red); font-weight: 500; }
+    .insight-text .good   { color: var(--green); font-weight: 500; }
+
+    /* ── PROCESS ── */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .process-card {
+      background: var(--surface);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: background 0.2s;
+    }
+
+    .process-card:hover { background: var(--surface2); }
+
+    .process-phase {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .process-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .process-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── DATA NOTE ── */
+    .data-note {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+    }
+
+    .data-note-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+
+    .data-note p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── DELIVERABLE ── */
+    .deliverable-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent2);
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s;
+    }
+
+    .deliverable-card:hover { background: var(--surface2); }
+
+    .deliverable-icon {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--accent2);
+      line-height: 1;
+    }
+
+    .deliverable-content { flex: 1; }
+
+    .deliverable-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 0.5rem;
+    }
+
+    .deliverable-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .deliverable-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .deliverable-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap 0.2s;
+    }
+
+    .deliverable-link:hover { gap: 0.8rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 8vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-name { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--accent); }
+    .footer-links { display: flex; gap: 1.5rem; }
+
+    .footer-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover { color: var(--accent); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 640px) {
+      .insight-item { grid-template-columns: 1fr; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<header>
+  <div class="hero-tag">SQL · Python · Tableau · 149,999 Borrowers · Project 8</div>
+  <h1>Fintech<br/><span class="accent">Credit Risk</span><br/>Analysis</h1>
+
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">Dataset</span>
+      <span class="meta-value">Kaggle: Give Me Some Credit · 149,999 Borrowers</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Tools</span>
+      <span class="meta-value">MySQL · Python · Tableau</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Focus</span>
+      <span class="meta-value">Default Risk · Financial Exposure · Operational Inefficiency</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Completed</span>
+      <span class="meta-value">Jul 2026</span>
+    </div>
+  </div>
+
+  <p class="hero-bio">A bureau-independent credit risk segmentation project — built as a proof of concept for Nigeria's digital lending sector, where most borrowers have no traditional credit bureau history. Combines MySQL segmentation, a custom Python-built Behavioral Risk Score, and a proxy Exposure Index to identify which borrowers are most likely to default, and why. Delivered as four interconnected Tableau dashboards.</p>
+
+  <div class="badge-row">
+    <span class="badge badge-sql">SQL</span>
+    <span class="badge badge-mysql">MySQL</span>
+    <span class="badge badge-python">Python</span>
+    <span class="badge badge-tableau">Tableau</span>
+    <span class="badge badge-complete">Complete</span>
+  </div>
+
+  <div class="hero-links">
+    <a class="hero-link" href="https://github.com/HarjiiBoss/fintech-credit-risk-analysis" target="_blank">GitHub Repo</a>
+    <a class="hero-link" href="https://public.tableau.com/views/FintechCreditRiskAnalysisDashboard/DB01-ExecutiveOverview" target="_blank">Live Tableau Dashboard</a>
+    <a class="hero-link" href="https://harjiiboss.github.io" target="_blank">Portfolio</a>
+  </div>
+
+  <div class="scroll-hint">Scroll to explore</div>
+</header>
+
+<main>
+
+  <!-- ═══ PERFORMANCE SNAPSHOT ═══ -->
+  <section>
+    <div class="section-label reveal">Performance Snapshot</div>
+    <h2 class="reveal">Key Metrics at a Glance</h2>
+
+    <div class="kpi-grid reveal">
+      <div class="kpi-card">
+        <div class="kpi-label">Total Borrowers</div>
+        <div class="kpi-value">149,999</div>
+        <div class="kpi-context">after Phase 1 cleaning</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Overall Default Rate</div>
+        <div class="kpi-value danger">6.68%</div>
+        <div class="kpi-context">baseline for all segment comparisons</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Critical Risk Default Rate</div>
+        <div class="kpi-value danger">47.11%</div>
+        <div class="kpi-context">vs. 2.23% for Low tier</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Strongest Risk Signal</div>
+        <div class="kpi-value warning">54.65%</div>
+        <div class="kpi-context">placeholder delinquency codes 96/98</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Peak Combined Risk</div>
+        <div class="kpi-value danger">55.0%</div>
+        <div class="kpi-context">Critical risk × Critical exposure</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Zero Credit Lines Default</div>
+        <div class="kpi-value danger">25.64%</div>
+        <div class="kpi-context">highest of any credit-line band</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DASHBOARD PREVIEW ═══ -->
+  <section>
+    <div class="section-label reveal">Interactive Dashboards</div>
+    <h2 class="reveal">Four Dashboards, One Compounding Risk Story</h2>
+    <p class="hero-bio reveal" style="margin-bottom: 2.5rem;">Built in Tableau Public using a consistent navy/gold visual system — SQL and Python compute every score in advance, Tableau presents and lets the viewer filter and explore. Each dashboard moves from "what is the portfolio's risk position?" to "where specifically should underwriting act?"</p>
+
+    <div class="dashboard-wrap reveal">
+      <img src="https://raw.githubusercontent.com/HarjiiBoss/fintech-credit-risk-analysis/main/tableau/screenshots/01_executive_overview.png" alt="Executive Overview Dashboard" />
+    </div>
+    <div class="dashboard-caption reveal">01 — Executive Overview: portfolio KPIs and the Risk × Exposure compounding heatmap</div>
+
+    <div class="dashboard-wrap reveal">
+      <img src="https://raw.githubusercontent.com/HarjiiBoss/fintech-credit-risk-analysis/main/tableau/screenshots/02_borrower_default_risk.png" alt="Borrower Default Risk Dashboard" />
+    </div>
+    <div class="dashboard-caption reveal">02 — Borrower Default Risk: behavioral risk tiers, age/income segmentation, and early-warning signals</div>
+
+    <div class="dashboard-wrap reveal">
+      <img src="https://raw.githubusercontent.com/HarjiiBoss/fintech-credit-risk-analysis/main/tableau/screenshots/03_financial_exposure_risk.png" alt="Financial Exposure Risk Dashboard" />
+    </div>
+    <div class="dashboard-caption reveal">03 — Financial Exposure Risk: Exposure Index, utilization and debt ratio bands, data-quality corrections</div>
+
+    <div class="dashboard-wrap reveal">
+      <img src="https://raw.githubusercontent.com/HarjiiBoss/fintech-credit-risk-analysis/main/tableau/screenshots/04_operational_inefficiency.png" alt="Operational Inefficiency Dashboard" />
+    </div>
+    <div class="dashboard-caption reveal">04 — Operational Inefficiency: credit-line proliferation, dependency burden, and approval-criteria gaps</div>
+  </section>
+
+  <!-- ═══ BORROWER DEFAULT RISK FINDINGS ═══ -->
+  <section>
+    <div class="section-label reveal">Borrower Default Risk</div>
+    <h2 class="reveal">Who Is Defaulting, and the Earliest Signals</h2>
+
+    <div class="findings-grid reveal">
+
+      <div class="finding-card">
+        <div class="finding-category">Data Quality Signal</div>
+        <div class="finding-title">A Placeholder Data-Error Code Was the Strongest Predictor Found</div>
+        <div class="finding-body">269 borrowers carrying placeholder delinquency codes (96/98) — clearly not genuine payment counts — recorded a <span class="danger">54.65%</span> observed default rate, versus 6.60% for the rest of the population. Investigated rather than discarded, it became the single strongest signal in the dataset.</div>
+        <div class="finding-number">01</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Age & Income</div>
+        <div class="finding-title">Borrowers in Their 30s on Lowest Income Default at 12.49%</div>
+        <div class="finding-body">Borrowers aged 30–39 in the lowest income quartile recorded a <span class="danger">12.49%</span> default rate (n=6,135) — nearly double the 6.68% portfolio baseline, and the highest of any age × income combination.</div>
+        <div class="finding-number">02</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Early Warning</div>
+        <div class="finding-title">One Early Delinquency Signals a 5.7× Increase in Risk</div>
+        <div class="finding-body">Borrowers with a single 30–59 day delinquency recorded an <span class="danger">18.13%</span> default rate, compared to 3.17% for those with none — an early, actionable signal rather than waiting for 90+ day default.</div>
+        <div class="finding-number">03</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Risk Segmentation</div>
+        <div class="finding-title">Behavioral Risk Tiers Separate Default Rate by 21×</div>
+        <div class="finding-body">A custom Behavioral Risk Score, built from delinquency frequency, recency proxy, and severity, cleanly separated borrowers into Low, Medium, High, and Critical tiers — with Critical borrowers defaulting at <strong>47.11%</strong> against 2.23% for Low.</div>
+        <div class="finding-number">04</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ FINANCIAL EXPOSURE RISK FINDINGS ═══ -->
+  <section>
+    <div class="section-label reveal">Financial Exposure Risk</div>
+    <h2 class="reveal">Where Exposure Builds Before Default Occurs</h2>
+
+    <div class="findings-grid reveal">
+
+      <div class="finding-card">
+        <div class="finding-category">Exposure Index</div>
+        <div class="finding-title">A Custom Exposure Index Adds Signal Beyond Payment History</div>
+        <div class="finding-body">Built from credit utilization and debt burden — since the dataset has no loan balance or credit-limit fields — the Exposure Index separated observed default rates by <span class="danger">~6.1×</span>, even among borrowers with a clean behavioral risk record.</div>
+        <div class="finding-number">05</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Data Quality</div>
+        <div class="finding-title">Two Measurement Limitations Were Identified and Corrected</div>
+        <div class="finding-body">Utilization defaulted to a placeholder value for borrowers with zero open credit lines, and debt ratio became unreliable when income was missing (90.04% overlap). Both were investigated and explicitly handled before being used in the index.</div>
+        <div class="finding-number">06</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Missing Data</div>
+        <div class="finding-title">Missing-Income Borrowers Preserved as a Monitored Segment</div>
+        <div class="finding-body">19.82% of borrowers could not be scored on the Exposure Index due to missing income. Rather than fabricating a score, they were labeled Indeterminate — their empirical default rate of <strong>5.61%</strong> falls sensibly between Low and Moderate.</div>
+        <div class="finding-number">07</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Compounding Risk</div>
+        <div class="finding-title">Critical Risk + Critical Exposure Defaults at 55.0%</div>
+        <div class="finding-body">Borrowers scoring Critical on both behavioral risk and financial exposure recorded a <span class="danger">55.0%</span> observed default rate — the highest combined-risk segment identified, and higher than either dimension alone.</div>
+        <div class="finding-number">08</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ OPERATIONAL INEFFICIENCY FINDINGS ═══ -->
+  <section>
+    <div class="section-label reveal">Operational Inefficiency</div>
+    <h2 class="reveal">Where Approval Criteria Create Avoidable Risk</h2>
+
+    <div class="findings-grid reveal">
+
+      <div class="finding-card">
+        <div class="finding-category">Thin-File Risk</div>
+        <div class="finding-title">Zero Open Credit Lines Recorded the Highest Default Rate of Any Band</div>
+        <div class="finding-body">Borrowers with zero open credit lines recorded a <span class="danger">25.64%</span> default rate — higher than every other credit-line band, including the most credit-active borrowers (16+ lines, 6.9%). Risk follows a U-shaped pattern, not a straight line.</div>
+        <div class="finding-number">09</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Household Burden</div>
+        <div class="finding-title">Dependency Burden Compounds Low-Income Risk</div>
+        <div class="finding-body">Borrowers with 3–4 dependents in the lowest income quartile recorded a <span class="danger">15.69%</span> default rate — more than double the 7.6% rate of income-matched borrowers with no dependents.</div>
+        <div class="finding-number">10</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Approval Calibration</div>
+        <div class="finding-title">Defaulters Differ Consistently Across Every Measured Characteristic</div>
+        <div class="finding-body">Defaulters average <strong>45.9 years old</strong> versus 51.7 for non-defaulters, alongside consistent gaps in income, open credit lines, and dependents — indicating a structural, addressable gap rather than a single-variable issue.</div>
+        <div class="finding-number">11</div>
+      </div>
+
+    </div>
+
+    <div class="data-note reveal">
+      <div class="data-note-label">Structural Flag</div>
+      <p>The evidence across all three pillars supports a move away from single-variable approval rules — income alone, or credit history alone — toward multi-factor borrower assessment combining behavioral history, financial exposure, and structural characteristics like credit-line count and dependency burden.</p>
+    </div>
+  </section>
+
+  <!-- ═══ RECOMMENDATIONS ═══ -->
+  <section>
+    <div class="section-label reveal">Business Recommendations</div>
+    <h2 class="reveal">Where Underwriting Investment Should Go</h2>
+
+    <div class="insights-list reveal">
+
+      <div class="insight-item">
+        <div class="insight-left">
+          <div class="insight-number">01</div>
+          <div class="insight-category">Data Quality</div>
+        </div>
+        <div class="insight-right">
+          <div class="insight-title">Investigate Anomalous Values Before Removing Them</div>
+          <div class="insight-text">Unusual or placeholder codes may contain the strongest available risk signal, as demonstrated by the <strong>54.65%</strong> default-rate finding. Automatic removal risks discarding meaningful predictive value.</div>
+        </div>
+      </div>
+
+      <div class="insight-item">
+        <div class="insight-left">
+          <div class="insight-number">02</div>
+          <div class="insight-category">Underwriting Model</div>
+        </div>
+        <div class="insight-right">
+          <div class="insight-title">Combine Behavioral Risk and Exposure Into One Score</div>
+          <div class="insight-text">The two dimensions compound rather than overlap, and together identify the highest-risk segment (<span class="danger">55.0%</span>) more precisely than either alone — a single-metric underwriting approach would miss this.</div>
+        </div>
+      </div>
+
+      <div class="insight-item">
+        <div class="insight-left">
+          <div class="insight-number">03</div>
+          <div class="insight-category">Thin-File Applicants</div>
+        </div>
+        <div class="insight-right">
+          <div class="insight-title">Flag Zero-Credit-Line Applicants for Enhanced Review</div>
+          <div class="insight-text">This segment recorded the highest observed default rate of any credit-line band (<strong>25.64%</strong>) — thin-file should not be treated as a neutral or low-risk default assumption.</div>
+        </div>
+      </div>
+
+      <div class="insight-item">
+        <div class="insight-left">
+          <div class="insight-number">04</div>
+          <div class="insight-category">Household Assessment</div>
+        </div>
+        <div class="insight-right">
+          <div class="insight-title">Weight Dependency Burden Alongside Income</div>
+          <div class="insight-text">Borrowers with 3+ dependents in the lowest income quartile default at more than twice the rate of income-matched peers with no dependents — a currently underused signal in traditional income-only assessment.</div>
+        </div>
+      </div>
+
+      <div class="insight-item">
+        <div class="insight-left">
+          <div class="insight-number">05</div>
+          <div class="insight-category">Early Intervention</div>
+        </div>
+        <div class="insight-right">
+          <div class="insight-title">Trigger Outreach at the First 30–59 Day Delinquency</div>
+          <div class="insight-text">A single early delinquency is associated with a <strong>~5.7×</strong> increase in the likelihood of reaching serious (90+ day) default — enabling proactive intervention rather than reactive collections.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ PROCESS ═══ -->
+  <section>
+    <div class="section-label reveal">Methodology</div>
+    <h2 class="reveal">7-Phase End-to-End Workflow</h2>
+
+    <div class="process-grid reveal">
+      <div class="process-card">
+        <div class="process-phase">Phase 0</div>
+        <div class="process-title">Setup & Database Design</div>
+        <div class="process-desc">Prepared the MySQL environment, ingested the Kaggle dataset via Python/SQLAlchemy ETL, resolved a schema precision issue caused by extreme utilization outliers.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-phase">Phase 1</div>
+        <div class="process-title">Cleaning & Exploratory Analysis</div>
+        <div class="process-desc">Five documented cleaning decisions — age=0 removal, income-missing flagging (not imputed), dependents imputation, utilization-extreme flagging, and delinquency placeholder-code discovery.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-phase">Phase 2</div>
+        <div class="process-title">Borrower Default Risk</div>
+        <div class="process-desc">SQL segmentation by age and income, high-risk borrower profiling, delinquency progression analysis, and a Python-built Behavioral Risk Score validated against real default rates.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-phase">Phase 3</div>
+        <div class="process-title">Financial Exposure Risk</div>
+        <div class="process-desc">Built a custom Exposure Index from utilization and debt ratio, identified and corrected two data-quality limitations, validated a ~6.1× exposure spread within the Low risk tier.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-phase">Phase 4</div>
+        <div class="process-title">Operational Inefficiency</div>
+        <div class="process-desc">Analysed credit-line proliferation, dependency burden versus income, and structural differences between defaulters and non-defaulters across every measured characteristic.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-phase">Phase 5</div>
+        <div class="process-title">Dashboard Design</div>
+        <div class="process-desc">Designed and built four interactive Tableau dashboards using a consistent navy/gold visual system, custom tooltips, mark annotations, and verified global filter scope.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-phase">Phase 6</div>
+        <div class="process-title">Business Insights</div>
+        <div class="process-desc">Converted analytical findings into evidence-calibrated business insights and recommendations, matching the strength of each claim to the strength of its underlying evidence.</div>
+      </div>
+    </div>
+
+    <div class="deliverable-card reveal">
+      <div class="deliverable-icon">↗</div>
+      <div class="deliverable-content">
+        <div class="deliverable-label">Full Project Repository</div>
+        <div class="deliverable-title">Fintech Credit Risk Analysis — GitHub</div>
+        <div class="deliverable-desc">Repository contains SQL scripts, Python notebooks covering ETL, risk scoring, and exposure indexing, the full Tableau workbook with four interactive dashboards, and complete phase-by-phase documentation including a data dictionary and project glossary.</div>
+        <a class="deliverable-link" href="https://github.com/HarjiiBoss/fintech-credit-risk-analysis" target="_blank">View Repository →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <span class="footer-name">Taofeek Salami</span>
+  <div class="footer-links">
+    <a class="footer-link" href="https://linkedin.com/in/taofeek-salami-460a93245" target="_blank">LinkedIn</a>
+    <a class="footer-link" href="https://github.com/HarjiiBoss" target="_blank">GitHub</a>
+    <a class="footer-link" href="mailto:salamitaofeek92@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
