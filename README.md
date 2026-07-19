@@ -1,6 +1,8 @@
 # Fintech Credit Risk Analysis
 ### Bureau-Independent Credit Risk Segmentation for Digital Lending
 
+![Executive Overview](tableau/screenshots/01_executive_overview.png)
+
 ---
 
 ## Problem Statement
