@@ -21,6 +21,8 @@ The documentation is organized to mirror the project's analytical workflow. Each
 | `phase_02_borrower_default_risk.md` | Documents borrower segmentation, behavioral risk scoring methodology, default risk analysis, and identification of early warning signals. |
 | `phase_03_financial_exposure_risk.md` | Explains the Exposure Index methodology, financial exposure analysis, revenue leakage assessment, and validation of exposure-based borrower segmentation. |
 | `phase_04_operational_inefficiency.md` | Evaluates operational lending inefficiencies, approval quality, portfolio characteristics, and opportunities to improve lending decisions. |
+| `phase_05_dashboard_design_documentation.md` | Documents the dashboard design process, including KPI selection, chart selection, layout decisions, interactivity, visual hierarchy, and how analytical findings were translated into decision-ready dashboards. |
+| `phase_06_business_insights_recommendations.md` | Consolidates the project's key business insights, evidence-backed recommendations, limitations, and potential actions for improving lending decisions, managing borrower risk, and reducing financial exposure. |
 
 ---
 
@@ -89,10 +91,12 @@ For the best understanding of the project, review the documentation in the follo
 4. `phase_02_borrower_default_risk.md`
 5. `phase_03_financial_exposure_risk.md`
 6. `phase_04_operational_inefficiency.md`
-7. `data_dictionary.md`
-8. `project_glossary.md`
-9. `security_notes.md`
-10. `tableau_blueprint.md`
+7. `phase_05_dashboard_design_documentation.md`
+8. `phase_06_business_insights_recommendations.md`
+9. `data_dictionary.md`
+10. `project_glossary.md`
+11. `security_notes.md`
+12. `tableau_blueprint.md`
 
 ---
 
