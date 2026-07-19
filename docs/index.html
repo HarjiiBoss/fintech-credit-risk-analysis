@@ -610,7 +610,7 @@
     </div>
   </div>
 
-  <p class="hero-bio">A bureau-independent credit risk segmentation project — built as a proof of concept for Nigeria's digital lending sector, where most borrowers have no traditional credit bureau history. Combines MySQL segmentation, a custom Python-built Behavioral Risk Score, and a proxy Exposure Index to identify which borrowers are most likely to default, and why. Delivered as four interconnected Tableau dashboards.</p>
+  <p class="hero-bio">A bureau-independent credit risk segmentation project — built as a proof of concept for Nigeria's digital lending sector, where most borrowers have no traditional credit bureau history. Combines MySQL segmentation, a custom Python-built Behavioral Risk Score, and a proxy Exposure Index to identify which borrower segments recorded the highest observed default rates, and which characteristics were associated with those outcomes. Delivered as four interconnected Tableau dashboards.</p>
 
   <div class="badge-row">
     <span class="badge badge-sql">SQL</span>
@@ -706,11 +706,11 @@
 
       <div class="finding-card">
         <div class="finding-category">Data Quality Signal</div>
-        <div class="finding-title">A Placeholder Data-Error Code Was the Strongest Predictor Found</div>
-        <div class="finding-body">269 borrowers carrying placeholder delinquency codes (96/98) — clearly not genuine payment counts — recorded a <span class="danger">54.65%</span> observed default rate, versus 6.60% for the rest of the population. Investigated rather than discarded, it became the single strongest signal in the dataset.</div>
+        <div class="finding-title">A Placeholder Data-Error Code Was the Strongest Risk Signal Found</div>
+        <div class="finding-body">269 borrowers carrying placeholder delinquency codes (96/98) — clearly not genuine payment counts — recorded a <span class="danger">54.65%</span> observed default rate, versus 6.60% for the rest of the population. Investigated rather than discarded, it became the single strongest observed risk signal in the dataset.</div>
         <div class="finding-number">01</div>
       </div>
-
+      
       <div class="finding-card">
         <div class="finding-category">Age & Income</div>
         <div class="finding-title">Borrowers in Their 30s on Lowest Income Default at 12.49%</div>
@@ -720,15 +720,15 @@
 
       <div class="finding-card">
         <div class="finding-category">Early Warning</div>
-        <div class="finding-title">One Early Delinquency Signals a 5.7× Increase in Risk</div>
-        <div class="finding-body">Borrowers with a single 30–59 day delinquency recorded an <span class="danger">18.13%</span> default rate, compared to 3.17% for those with none — an early, actionable signal rather than waiting for 90+ day default.</div>
+        <div class="finding-title">A Single Early Delinquency Corresponded With a 5.7× Higher Default Rate</div>
+        <div class="finding-body">Borrowers with a single 30–59 day delinquency recorded an <span class="danger">18.13%</span> default rate, compared to 3.17% for those with none — an early, observable risk marker rather than waiting for 90+ day default.</div>
         <div class="finding-number">03</div>
       </div>
 
       <div class="finding-card">
         <div class="finding-category">Risk Segmentation</div>
-        <div class="finding-title">Behavioral Risk Tiers Separate Default Rate by 21×</div>
-        <div class="finding-body">A custom Behavioral Risk Score, built from delinquency frequency, recency proxy, and severity, cleanly separated borrowers into Low, Medium, High, and Critical tiers — with Critical borrowers defaulting at <strong>47.11%</strong> against 2.23% for Low.</div>
+        <div class="finding-title">Behavioral Risk Tiers Showed a 21× Difference in Observed Default Rates</div>
+        <div class="finding-body">A custom Behavioral Risk Score, built from delinquency frequency, recency proxy, and severity. The score differentiated observed default rates across the four tiers; Low, Medium, High, and Critical tiers — with Critical borrowers defaulting at <strong>47.11%</strong> against 2.23% for Low.</div>
         <div class="finding-number">04</div>
       </div>
 
@@ -738,13 +738,13 @@
   <!-- ═══ FINANCIAL EXPOSURE RISK FINDINGS ═══ -->
   <section>
     <div class="section-label reveal">Financial Exposure Risk</div>
-    <h2 class="reveal">Where Exposure Builds Before Default Occurs</h2>
+    <h2 class="reveal">Where Financial Exposure Is Associated With Higher Default Risk</h2>
 
     <div class="findings-grid reveal">
 
       <div class="finding-card">
         <div class="finding-category">Exposure Index</div>
-        <div class="finding-title">A Custom Exposure Index Adds Signal Beyond Payment History</div>
+        <div class="finding-title">A Custom Exposure Index Revealed Additional Default-Rate Differences Beyond Payment History</div>
         <div class="finding-body">Built from credit utilization and debt burden — since the dataset has no loan balance or credit-limit fields — the Exposure Index separated observed default rates by <span class="danger">~6.1×</span>, even among borrowers with a clean behavioral risk record.</div>
         <div class="finding-number">05</div>
       </div>
@@ -759,14 +759,14 @@
       <div class="finding-card">
         <div class="finding-category">Missing Data</div>
         <div class="finding-title">Missing-Income Borrowers Preserved as a Monitored Segment</div>
-        <div class="finding-body">19.82% of borrowers could not be scored on the Exposure Index due to missing income. Rather than fabricating a score, they were labeled Indeterminate — their empirical default rate of <strong>5.61%</strong> falls sensibly between Low and Moderate.</div>
+        <div class="finding-body">19.82% of borrowers could not be scored on the Exposure Index due to missing income. Rather than fabricating a score, they were labeled Indeterminatetheir empirical default rate of <strong>5.61%</strong> fell between the observed default rates of the Low and Moderate tiers.</div>
         <div class="finding-number">07</div>
       </div>
 
       <div class="finding-card">
-        <div class="finding-category">Compounding Risk</div>
-        <div class="finding-title">Critical Risk + Critical Exposure Defaults at 55.0%</div>
-        <div class="finding-body">Borrowers scoring Critical on both behavioral risk and financial exposure recorded a <span class="danger">55.0%</span> observed default rate — the highest combined-risk segment identified, and higher than either dimension alone.</div>
+        <div class="finding-category">Combined Risk</div>
+        <div class="finding-title">Critical Risk + Critical Exposure Recorded a 55.0% Default Rate</div>
+        <div class="finding-body">Borrowers scoring Critical on both behavioral risk and financial exposure recorded a <span class="danger">55.0%</span> observed default rate — the highest combined-risk segment identified and higher than the observed default rate associated with either dimension alone.</div>
         <div class="finding-number">08</div>
       </div>
 
@@ -783,13 +783,13 @@
       <div class="finding-card">
         <div class="finding-category">Thin-File Risk</div>
         <div class="finding-title">Zero Open Credit Lines Recorded the Highest Default Rate of Any Band</div>
-        <div class="finding-body">Borrowers with zero open credit lines recorded a <span class="danger">25.64%</span> default rate — higher than every other credit-line band, including the most credit-active borrowers (16+ lines, 6.9%). Risk follows a U-shaped pattern, not a straight line.</div>
+        <div class="finding-body">Borrowers with zero open credit lines recorded a <span class="danger">25.64%</span> default rate — higher than every other credit-line band, including the most credit-active borrowers (16+ lines, 6.9%). Observed default rates followed a U-shaped pattern rather than moving consistently in one direction with credit-line count.</div>
         <div class="finding-number">09</div>
       </div>
 
       <div class="finding-card">
         <div class="finding-category">Household Burden</div>
-        <div class="finding-title">Dependency Burden Compounds Low-Income Risk</div>
+        <div class="finding-title">Dependency Burden Was Associated With Higher Default Rates Among Lower-Income Borrowers</div>
         <div class="finding-body">Borrowers with 3–4 dependents in the lowest income quartile recorded a <span class="danger">15.69%</span> default rate — more than double the 7.6% rate of income-matched borrowers with no dependents.</div>
         <div class="finding-number">10</div>
       </div>
@@ -797,7 +797,7 @@
       <div class="finding-card">
         <div class="finding-category">Approval Calibration</div>
         <div class="finding-title">Defaulters Differ Consistently Across Every Measured Characteristic</div>
-        <div class="finding-body">Defaulters average <strong>45.9 years old</strong> versus 51.7 for non-defaulters, alongside consistent gaps in income, open credit lines, and dependents — indicating a structural, addressable gap rather than a single-variable issue.</div>
+        <div class="finding-body">Defaulters averaged <strong>45.9 years old</strong> versus 51.7 for non-defaulters, alongside observed differences in income, open credit lines, and dependents — suggesting that default risk is associated with multiple borrower characteristics rather than a single measured variable.</div>
         <div class="finding-number">11</div>
       </div>
 
@@ -805,7 +805,7 @@
 
     <div class="data-note reveal">
       <div class="data-note-label">Structural Flag</div>
-      <p>The evidence across all three pillars supports a move away from single-variable approval rules — income alone, or credit history alone — toward multi-factor borrower assessment combining behavioral history, financial exposure, and structural characteristics like credit-line count and dependency burden.</p>
+      <p>The observed differences across all three pillars support evaluating a move away from single-variable approval rules — such as income alone or credit history alone — toward a multi-factor borrower assessment combining behavioral history, financial exposure, and structural characteristics such as credit-line count and dependency burden.</p>
     </div>
   </section>
 
@@ -823,7 +823,7 @@
         </div>
         <div class="insight-right">
           <div class="insight-title">Investigate Anomalous Values Before Removing Them</div>
-          <div class="insight-text">Unusual or placeholder codes may contain the strongest available risk signal, as demonstrated by the <strong>54.65%</strong> default-rate finding. Automatic removal risks discarding meaningful predictive value.</div>
+          <div class="insight-text">Unusual or placeholder codes may contain the strongest available risk signal, as demonstrated by the <strong>54.65%</strong> default-rate finding. Automatic removal risks discarding potentially meaningful risk information.</div>
         </div>
       </div>
 
@@ -833,8 +833,8 @@
           <div class="insight-category">Underwriting Model</div>
         </div>
         <div class="insight-right">
-          <div class="insight-title">Combine Behavioral Risk and Exposure Into One Score</div>
-          <div class="insight-text">The two dimensions compound rather than overlap, and together identify the highest-risk segment (<span class="danger">55.0%</span>) more precisely than either alone — a single-metric underwriting approach would miss this.</div>
+          <div class="insight-title">Use Behavioral Risk and Financial Exposure Together in Underwriting Assessment</div>
+          <div class="insight-text">The two dimensions captured different aspects of borrower risk, and borrowers classified as Critical on both recorded the highest observed default rate at <span class="danger">55.0%</span>. A multi-dimensional underwriting assessment could therefore provide more complete risk context than relying on either dimension alone, subject to further validation before production use.</div>
         </div>
       </div>
 
@@ -845,7 +845,7 @@
         </div>
         <div class="insight-right">
           <div class="insight-title">Flag Zero-Credit-Line Applicants for Enhanced Review</div>
-          <div class="insight-text">This segment recorded the highest observed default rate of any credit-line band (<strong>25.64%</strong>) — thin-file should not be treated as a neutral or low-risk default assumption.</div>
+          <div class="insight-text">This segment recorded the highest observed default rate of any credit-line band (<strong>25.64%</strong>) — thin-file applicants should not automatically be treated as neutral or low-risk.</div>
         </div>
       </div>
 
@@ -856,7 +856,7 @@
         </div>
         <div class="insight-right">
           <div class="insight-title">Weight Dependency Burden Alongside Income</div>
-          <div class="insight-text">Borrowers with 3+ dependents in the lowest income quartile default at more than twice the rate of income-matched peers with no dependents — a currently underused signal in traditional income-only assessment.</div>
+          <div class="insight-text">Borrowers with 3+ dependents in the lowest income quartile default at more than twice the rate of income-matched peers with no dependents — a borrower characteristic that may be overlooked in income-only assessment.</div>
         </div>
       </div>
 
@@ -867,7 +867,7 @@
         </div>
         <div class="insight-right">
           <div class="insight-title">Trigger Outreach at the First 30–59 Day Delinquency</div>
-          <div class="insight-text">A single early delinquency is associated with a <strong>~5.7×</strong> increase in the likelihood of reaching serious (90+ day) default — enabling proactive intervention rather than reactive collections.</div>
+          <div class="insight-text">A single early delinquency was associated with an approximately <strong>5.7× higher observed default rate</strong> compared with borrowers with no 30–59 day delinquency — supporting earlier review before borrowers reach 90+ day delinquency.</div>
         </div>
       </div>
 
@@ -893,12 +893,12 @@
       <div class="process-card">
         <div class="process-phase">Phase 2</div>
         <div class="process-title">Borrower Default Risk</div>
-        <div class="process-desc">SQL segmentation by age and income, high-risk borrower profiling, delinquency progression analysis, and a Python-built Behavioral Risk Score validated against real default rates.</div>
+        <div class="process-desc">SQL segmentation by age and income, high-risk borrower profiling, delinquency progression analysis, and a Python-built Behavioral Risk Score whose tiers were compared against observed default rates.</div>
       </div>
       <div class="process-card">
         <div class="process-phase">Phase 3</div>
         <div class="process-title">Financial Exposure Risk</div>
-        <div class="process-desc">Built a custom Exposure Index from utilization and debt ratio, identified and corrected two data-quality limitations, validated a ~6.1× exposure spread within the Low risk tier.</div>
+        <div class="process-desc">Built a custom Exposure Index from utilization and debt ratio, identified and corrected two data-quality limitations, ...examined observed default-rate differences within the Low behavioral-risk tier, including an approximately 6.1× spread across exposure categories.</div>
       </div>
       <div class="process-card">
         <div class="process-phase">Phase 4</div>
