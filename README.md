@@ -91,6 +91,7 @@ fintech-credit-risk-analysis/
 │   ├── phase_04_operational_inefficiency.md
 │   ├── phase_05_dashboard_design.md
 │   ├── phase_06_business_insights.md
+│   ├── phase_07_inference_prediction.md
 │   ├── data_dictionary.md
 │   ├── project_glossary.md
 │   ├── security_notes.md
@@ -164,6 +165,9 @@ Phase 5 — Dashboard Design & Documentation
                     │
                     ▼
 Phase 6 — Business Insights & Recommendations
+                    │
+                    ▼
+Phase 7 — Statistical Inference & Predictive Modeling
 ```
 
 The workflow combines:
@@ -210,6 +214,13 @@ The workflow combines:
   - Number of dependents
 - The results support a move away from single-variable approval rules toward multi-factor borrower assessment.
 
+### Statistical Inference & Predictive Modeling
+
+- A chi-square test confirmed that default rate differences across behavioral risk tiers are statistically significant (p < 0.001), not sampling variation.
+- A two-proportion z-test quantified the Low-vs-Critical default rate gap at a 95% confidence interval of 43.5–46.2 percentage points.
+- A logistic regression model, evaluated on a held-out test set, achieved an AUC of 0.8349 (Gini 0.6699), correctly identifying 72% of actual defaulters.
+- Model outputs are default-risk scores rather than calibrated Probability of Default estimates, since class weighting was used to address the 6.68% class imbalance.
+
 ---
 
 ## Tools & Technologies
@@ -222,6 +233,7 @@ The workflow combines:
 | Jupyter Notebook | Reproducible analytical workflow |
 | Tableau Public | Interactive business intelligence dashboards |
 | Git & GitHub | Version control and project documentation |
+| SciPy, Statsmodels, Scikit-learn | Statistical inference and predictive modeling (Phase 7) |
 
 ---
 
@@ -255,6 +267,7 @@ Comprehensive project documentation is available in the docs/ directory.
 | phase_04_operational_inefficiency.md | Operational and structural borrower risk analysis |
 | phase_05_dashboard_design.md | Tableau dashboard design, architecture, and validation |
 | phase_06_business_insights.md | Business insights and evidence-based recommendations |
+| phase_07_inference_prediction.md | Statistical inference and default-risk predictive modeling |
 | data_dictionary.md | Original dataset fields and engineered variables |
 | project_glossary.md | Credit risk and fintech terminology |
 | security_notes.md | Security practices and environment configuration |
