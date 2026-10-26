@@ -610,7 +610,7 @@
     </div>
   </div>
 
-  <p class="hero-bio">A bureau-independent credit risk segmentation project — built as a proof of concept for Nigeria's digital lending sector, where most borrowers have no traditional credit bureau history. Combines MySQL segmentation, a custom Python-built Behavioral Risk Score, and a proxy Exposure Index to identify which borrower segments recorded the highest observed default rates, and which characteristics were associated with those outcomes. Delivered as four interconnected Tableau dashboards.</p>
+  <p class="hero-bio">A bureau-independent credit risk segmentation project — built as a proof of concept for Nigeria's digital lending sector, where most borrowers have no traditional credit bureau history. Combines MySQL segmentation, a custom Python-built Behavioral Risk Score, and a proxy Exposure Index to identify which borrower segments recorded the highest observed default rates, and which characteristics were associated with those outcomes. Delivered as four interconnected Tableau dashboards, with a Phase 7 default-risk model (AUC 0.83). Capstone project for the 3MTT Data Analysis &amp; Visualization programme.</p>
 
   <div class="badge-row">
     <span class="badge badge-sql">SQL</span>
@@ -809,6 +809,48 @@
     </div>
   </section>
 
+  <!-- ═══ STATISTICAL INFERENCE & PREDICTION (PHASE 7) ═══ -->
+  <section>
+    <div class="section-label reveal">Statistical Inference &amp; Prediction</div>
+    <h2 class="reveal">Testing the Tiers and Predicting Default</h2>
+    <p class="hero-bio reveal" style="margin-bottom: 2.5rem;">Phase 7 tested whether the risk tiers separate defaulters by more than chance, then built a logistic regression to rank borrowers by default risk, evaluated on a held-out 20% of borrowers (30,000) that the model never saw in training.</p>
+
+    <div class="findings-grid reveal">
+
+      <div class="finding-card">
+        <div class="finding-category">Inference</div>
+        <div class="finding-title">Tier Separation Is Statistically Significant</div>
+        <div class="finding-body">A chi-square test rejects independence between risk tier and default (<strong>χ² = 21,521, df = 3, p &lt; 0.001</strong>). The gap between the Critical (47.11%) and Low (2.23%) tiers is <strong>44.9 percentage points</strong>, with a 95% confidence interval of 43.5 to 46.2.</div>
+        <div class="finding-number">12</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Prediction</div>
+        <div class="finding-title">Logistic Regression Reaches an AUC of 0.83 on Held-Out Data</div>
+        <div class="finding-body">Using risk tier, exposure tier, age, utilization and the data-quality flag, the model scores <strong>AUC 0.8349 (Gini 0.67)</strong> on the test set. Risk and exposure tiers carry the model: once they are included, the data-quality flag and utilization are no longer significant, because both already feed the tiers.</div>
+        <div class="finding-number">13</div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-category">Screening Trade-off</div>
+        <div class="finding-title">Catches 72% of Defaulters at 20% Precision</div>
+        <div class="finding-body">With class weighting for the 6.68% default rate, the model flags <strong>72% of actual defaulters</strong>; about 1 in 5 flagged borrowers defaults. That suits a first-stage screen that sends borrowers to manual review, not an automatic decline.</div>
+        <div class="finding-number">14</div>
+      </div>
+
+    </div>
+
+    <div class="dashboard-wrap reveal" style="max-width: 520px; margin-top: 2.5rem;">
+      <img src="https://raw.githubusercontent.com/HarjiiBoss/fintech-credit-risk-analysis/main/outputs/chart_roc_curve.png" alt="ROC curve of the default-risk model, AUC 0.8349" />
+    </div>
+    <div class="dashboard-caption reveal" style="max-width: 520px;">ROC curve on the 30,000-borrower test set — AUC 0.8349 against 0.5 for random ranking</div>
+
+    <div class="data-note reveal">
+      <div class="data-note-label">Model Limits</div>
+      <p>The scores rank borrowers by risk but are not calibrated probabilities of default, because class weighting was used in training. Expected loss cannot be computed: the data has no loan balance, credit limit or recovery fields. The tiers are engineered from borrower characteristics, so their predictive strength validates the segmentation; it does not show that they cause default.</p>
+    </div>
+  </section>
+
   <!-- ═══ RECOMMENDATIONS ═══ -->
   <section>
     <div class="section-label reveal">Business Recommendations</div>
@@ -877,7 +919,7 @@
   <!-- ═══ PROCESS ═══ -->
   <section>
     <div class="section-label reveal">Methodology</div>
-    <h2 class="reveal">7-Phase End-to-End Workflow</h2>
+    <h2 class="reveal">8-Phase End-to-End Workflow</h2>
 
     <div class="process-grid reveal">
       <div class="process-card">
@@ -898,7 +940,7 @@
       <div class="process-card">
         <div class="process-phase">Phase 3</div>
         <div class="process-title">Financial Exposure Risk</div>
-        <div class="process-desc">Built a custom Exposure Index from utilization and debt ratio, identified and corrected two data-quality limitations, ...examined observed default-rate differences within the Low behavioral-risk tier, including an approximately 6.1× spread across exposure categories.</div>
+        <div class="process-desc">Built a custom Exposure Index from utilization and debt ratio, identified and corrected two data-quality limitations, and examined observed default-rate differences within the Low behavioral-risk tier, including an approximately 6.1× spread across exposure categories.</div>
       </div>
       <div class="process-card">
         <div class="process-phase">Phase 4</div>
@@ -915,6 +957,11 @@
         <div class="process-title">Business Insights</div>
         <div class="process-desc">Converted analytical findings into evidence-calibrated business insights and recommendations, matching the strength of each claim to the strength of its underlying evidence.</div>
       </div>
+      <div class="process-card">
+        <div class="process-phase">Phase 7</div>
+        <div class="process-title">Inference &amp; Prediction</div>
+        <div class="process-desc">Tested tier separation with chi-square and two-proportion z-tests, then fitted a logistic regression (statsmodels for coefficients, scikit-learn for an 80/20 held-out evaluation): AUC 0.8349.</div>
+      </div>
     </div>
 
     <div class="deliverable-card reveal">
@@ -922,7 +969,7 @@
       <div class="deliverable-content">
         <div class="deliverable-label">Full Project Repository</div>
         <div class="deliverable-title">Fintech Credit Risk Analysis — GitHub</div>
-        <div class="deliverable-desc">Repository contains SQL scripts, Python notebooks covering ETL, risk scoring, and exposure indexing, the full Tableau workbook with four interactive dashboards, and complete phase-by-phase documentation including a data dictionary and project glossary.</div>
+        <div class="deliverable-desc">Repository contains SQL scripts, Python notebooks covering ETL, risk scoring, exposure indexing, and statistical inference and prediction, the full Tableau workbook with four interactive dashboards, and complete phase-by-phase documentation including a data dictionary and project glossary.</div>
         <a class="deliverable-link" href="https://github.com/HarjiiBoss/fintech-credit-risk-analysis" target="_blank">View Repository →</a>
       </div>
     </div>
