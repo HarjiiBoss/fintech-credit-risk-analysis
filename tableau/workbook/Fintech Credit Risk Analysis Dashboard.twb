@@ -6016,7 +6016,7 @@
       <layout-options>
         <title>
           <formatted-text>
-            <run fontcolor='#1f3864' fontsize='12'>Default Rate by Delinquency History</run>
+            <run fontcolor='#1f3864' fontsize='12'>90+ Day Late Rate by 30–59 Day History</run>
             <run fontcolor='#000000' fontname='Benton Sans Book' fontsize='12'>Æ </run>
           </formatted-text>
         </title>
@@ -6081,21 +6081,21 @@
                 <run fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'>Delinquency Group: </run>
                 <run bold='true' fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'><![CDATA[<[federated.0d7wz611npgixz1gq1gec1oj3kgb].[none:group (Union):nk]>]]></run>
                 <run>Æ&#10;</run>
-                <run fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'>Default Rate: </run>
+                <run fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'>90+ Day Late Rate: </run>
                 <run bold='true' fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'><![CDATA[<[federated.0d7wz611npgixz1gq1gec1oj3kgb].[avg:progression_rate_pct (Union):qk]>]]></run>
                 <run>Æ&#10;</run>
                 <run fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'>Borrowers: </run>
                 <run bold='true' fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'><![CDATA[<[federated.0d7wz611npgixz1gq1gec1oj3kgb].[sum:total_borrowers (Union):qk]>]]></run>
                 <run>Æ&#10;&#10;</run>
-                <run fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'>Insight: Borrowers with a </run>
+                <run fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'>Insight: Of borrowers with a </run>
                 <run bold='true' fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'>30–59</run>
-                <run fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'> day delinquency recorded an </run>
+                <run fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'> day late payment, </run>
                 <run bold='true' fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'>18.1%</run>
-                <run fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'> serious-default rate — approximately </run>
+                <run fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'> also had a 90+ day late payment — approximately </run>
                 <run bold='true' fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'>5.7×</run>
                 <run fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'> the </run>
                 <run bold='true' fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'>3.2%</run>
-                <run fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'> rate among borrowers with no recorded delinquency. This is a cross-sectional association, not a time-based progression, because the dataset contains no event timestamps.</run>
+                <run fontcolor='#000000' fontname='Tableau Light' fontsize='8' italic='true'> rate among borrowers with no 30–59 day late payment. This is a cross-sectional association, not a time-based progression, because the dataset contains no event timestamps.</run>
               </formatted-text>
             </customized-tooltip>
             <style>
@@ -8236,7 +8236,7 @@
                     <run fontcolor='#a9b4c2' fontname='Google Sans Text'>Borrowers in their 30s and lowest income quartile defaulted at 12.49%, nearly twice the portfolio average.</run>
                     <run>Æ&#10;</run>
                     <run bold='true' fontcolor='#a9b4c2'>• </run>
-                    <run fontcolor='#a9b4c2' fontname='Google Sans Text'>A single 30–59 day delinquency was associated with nearly 6× higher serious-default risk.</run>
+                    <run fontcolor='#a9b4c2' fontname='Google Sans Text'>A 30–59 day late payment went with 5.7× the rate of 90+ day late payments.</run>
                   </formatted-text>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -8625,7 +8625,7 @@
                     <run fontcolor='#a9b4c2' fontname='Google Sans Text'>Borrowers in their 30s and lowest income quartile defaulted at 12.49%, nearly twice the portfolio average.</run>
                     <run>Æ&#10;</run>
                     <run bold='true' fontcolor='#a9b4c2'>• </run>
-                    <run fontcolor='#a9b4c2' fontname='Google Sans Text'>A single 30–59 day delinquency was associated with nearly 6× higher serious-default risk.</run>
+                    <run fontcolor='#a9b4c2' fontname='Google Sans Text'>A 30–59 day late payment went with 5.7× the rate of 90+ day late payments.</run>
                   </formatted-text>
                   <zone-style>
                     <format attr='border-color' value='#000000' />

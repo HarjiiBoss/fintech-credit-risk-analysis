@@ -37,6 +37,8 @@ Using behavioral lending data, the project:
 
 The result is a bureau-independent credit risk framework designed to demonstrate how alternative borrower data can support lending decisions in emerging digital credit markets.
 
+The question, scope, metric definitions and known risks are recorded in [PROJECT_INFO.md](PROJECT_INFO.md), written retrospectively in October 2026.
+
 ---
 
 # 🖥️ Dashboard Preview
@@ -89,8 +91,8 @@ fintech-credit-risk-analysis/
 │   ├── phase_02_borrower_default_risk.md
 │   ├── phase_03_financial_exposure_risk.md
 │   ├── phase_04_operational_inefficiency.md
-│   ├── phase_05_dashboard_design.md
-│   ├── phase_06_business_insights.md
+│   ├── phase_05_dashboard_design_documentation.md
+│   ├── phase_06_business_insights_recommendations.md
 │   ├── phase_07_inference_prediction.md
 │   ├── data_dictionary.md
 │   ├── project_glossary.md
@@ -105,6 +107,7 @@ fintech-credit-risk-analysis/
 │   ├── workbook/
 │   └── screenshots/
 │
+├── PROJECT_INFO.md
 ├── README.md
 └── LICENSE
 ```
@@ -186,10 +189,10 @@ The workflow combines:
 
 ### Borrower Default Risk
 
-- Borrowers aged 20–39 consistently exhibited the highest observed default rates.
-- A single 30–59 day delinquency was associated with approximately a 5.7× higher observed default rate than borrowers with no such delinquency history.
+- Borrowers in their 20s (11.73%) and 30s (10.07%) had the highest observed default rates of the five age bands.
+- Borrowers with at least one 30–59 day late payment were about 5.7× as likely to also have a 90+ day late payment on record (18.13% against 3.17%). Both groups are measured at the same snapshot, so this is an association, not a recorded progression, and it uses the late-payment counts rather than the default target.
 - The Behavioral Risk Score segmented borrowers into Low, Medium, High, and Critical tiers with clear differences in observed default rates.
-- Placeholder delinquency codes 96/98 produced a 54.65% observed default rate, making them the strongest single risk signal identified in the analysis.
+- The 269 borrowers carrying placeholder delinquency codes 96/98 had a 54.65% observed default rate, the strongest single risk signal identified in the analysis.
 - Borrowers in their 30s within the lowest income quartile defaulted at 12.49%, nearly twice the overall portfolio baseline.
 
 ### Financial Exposure Risk
@@ -218,7 +221,8 @@ The workflow combines:
 
 - A chi-square test confirmed that default rate differences across behavioral risk tiers are statistically significant (p < 0.001), not sampling variation.
 - A two-proportion z-test quantified the Low-vs-Critical default rate gap at a 95% confidence interval of 43.5–46.2 percentage points.
-- A logistic regression model, evaluated on a held-out test set, achieved an AUC of 0.8349 (Gini 0.6699), correctly identifying 72% of actual defaulters.
+- A logistic regression model, evaluated on a held-out test set, achieved an AUC of 0.8349 (Gini 0.6699), correctly identifying 72% of actual defaulters at a precision of 20%.
+- The tier rules and debt-ratio quartiles were set using all 149,999 borrowers, including the 30,000 later held out for testing, so the test-set AUC may be somewhat optimistic.
 - Model outputs are default-risk scores rather than calibrated Probability of Default estimates, since class weighting was used to address the 6.68% class imbalance.
 
 ---
@@ -259,14 +263,15 @@ Comprehensive project documentation is available in the docs/ directory.
 
 | Document | Description |
 |---|---|
+| ../PROJECT_INFO.md | Project charter (retrospective): question, scope, metric definitions, known risks |
 | documentation_index.md | Documentation overview and navigation |
 | phase_00_project_setup.md | Project setup, database design, and data ingestion |
 | phase_01_data_cleaning_eda.md | Data cleaning, quality assessment, and exploratory analysis |
 | phase_02_borrower_default_risk.md | Borrower default risk analysis and behavioral risk scoring |
 | phase_03_financial_exposure_risk.md | Exposure analysis and Exposure Index development |
 | phase_04_operational_inefficiency.md | Operational and structural borrower risk analysis |
-| phase_05_dashboard_design.md | Tableau dashboard design, architecture, and validation |
-| phase_06_business_insights.md | Business insights and evidence-based recommendations |
+| phase_05_dashboard_design_documentation.md | Tableau dashboard design, architecture, and validation |
+| phase_06_business_insights_recommendations.md | Business insights and evidence-based recommendations |
 | phase_07_inference_prediction.md | Statistical inference and default-risk predictive modeling |
 | data_dictionary.md | Original dataset fields and engineered variables |
 | project_glossary.md | Credit risk and fintech terminology |
@@ -278,16 +283,15 @@ Comprehensive project documentation is available in the docs/ directory.
 ## How to Reproduce
 
 1. Clone this repository.
-2. Download the Give Me Some Credit dataset from Kaggle.
-3. Place the raw dataset inside data/raw/.
-4. Configure the required database credentials using environment variables.
-5. Execute sql/00_setup.sql to create the database structure.
-6. Run the analytical notebooks in sequence:
-   - 01_cleaning_eda.ipynb
-   - 02_risk_scoring.ipynb
-   - 03_exposure_analysis.ipynb
-   - 04_operational_analysis.ipynb
-7. Execute the relevant SQL analysis scripts.
+2. Download `cs-training.csv` from the Kaggle Give Me Some Credit dataset and place it in `data/raw/` (raw files are not tracked).
+3. Set the database credentials as environment variables (see `docs/security_notes.md`).
+4. Run `sql/00_setup.sql` to create the database and table.
+5. Run `notebooks/01_cleaning_eda.ipynb`, which loads the data into MySQL and writes the cleaned dataset.
+6. Run the SQL analysis scripts `sql/01_cleaning_eda.sql` to `sql/04_operational_inefficiency.sql`; their saved results are in `outputs/`.
+7. Run the remaining notebooks in order:
+   - `02_risk_scoring.ipynb`
+   - `03_exposure_analysis.ipynb`
+   - `07_inference_and_prediction.ipynb`
 8. Open the Tableau workbook or view the published Tableau Public dashboard.
 
 ---
@@ -359,3 +363,26 @@ This project is intended for educational and portfolio purposes.
 The original Give Me Some Credit dataset is provided by Kaggle under its applicable terms of use.
 
 All SQL scripts, Python notebooks, feature engineering, documentation, dashboards, and analytical methodologies contained in this repository are original work created by Taofeek Salami.
+
+---
+
+## Corrections
+
+**29 October 2026**
+
+- **30–59 day late payments:** the README, project page, Phase 6 record and Tableau dashboard said that "a single 30–59 day delinquency" went with a 5.7× higher *default rate*. The query behind it (`sql/02_borrower_default_risk.sql`, sections 4 and 5) counts borrowers with **one or more** 30–59 day late payments and measures how many **also have a 90+ day late payment on record** (18.13% against 3.17%), not the default target `SeriousDlqin2yrs`. The figures are unchanged; the wording now says what was measured. The Phase 2 record already described it correctly.
+- **Model evaluation:** added that the tier rules and debt-ratio quartiles were set on all 149,999 borrowers, including the 30,000 test borrowers, so the test-set AUC may be somewhat optimistic. Precision (20%) added next to recall.
+- **Wording:** "consistently" removed from the age finding, which now gives the two rates; "produced" replaced in the placeholder-code finding.
+- **Documentation:** file names in the Repository Structure and Documentation tables, and the notebook list in How to Reproduce, now match the repository. A retrospective project charter, [PROJECT_INFO.md](PROJECT_INFO.md), was added.
+
+## Published Surfaces
+
+Every place this project's findings appear outside this repository. When a figure changes, each one is updated and its date refreshed (Data Analysis Playbook v3.4, Published Surfaces).
+
+| Surface | Link | Figures quoted | Last checked |
+|---------|------|----------------|--------------|
+| Project page | [taofeeksalami.com/fintech-credit-risk-analysis](https://taofeeksalami.com/fintech-credit-risk-analysis) | Full findings | 29 Oct 2026 |
+| Tableau Public dashboard | [Fintech Credit Risk Analysis Dashboard](https://public.tableau.com/views/FintechCreditRiskAnalysisDashboard/DB01-ExecutiveOverview) | Four dashboards; DB02 carries the 30–59 day finding | 29 Oct 2026, after republishing |
+| Portfolio site card | [taofeeksalami.com](https://taofeeksalami.com) | 149,999 borrowers, AUC 0.83, 55.0%, 54.65% | 29 Oct 2026 |
+| GitHub profile README | [github.com/HarjiiBoss](https://github.com/HarjiiBoss) | 149,999, 47.11% vs 2.23%, 55.0%, 269 at 54.65%, 0.83 AUC, 72%, 19.82% | 29 Oct 2026 |
+| Resume | — | 149,999, 47.11% vs 2.23%, 55.0%, 269 at 54.65%, AUC 0.83, 72% | 29 Oct 2026 |
