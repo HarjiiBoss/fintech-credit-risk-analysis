@@ -23,6 +23,7 @@ The documentation is organized to mirror the project's analytical workflow. Each
 | `phase_04_operational_inefficiency.md` | Evaluates operational lending inefficiencies, approval quality, portfolio characteristics, and opportunities to improve lending decisions. |
 | `phase_05_dashboard_design_documentation.md` | Documents the dashboard design process, including KPI selection, chart selection, layout decisions, interactivity, visual hierarchy, and how analytical findings were translated into decision-ready dashboards. |
 | `phase_06_business_insights_recommendations.md` | Consolidates the project's key business insights, evidence-backed recommendations, limitations, and potential actions for improving lending decisions, managing borrower risk, and reducing financial exposure. |
+| `phase_07_inference_prediction.md` | Chi-square and two-proportion z-tests on the risk tiers, and a logistic regression evaluated on a held-out test set. |
 
 ---
 
@@ -93,10 +94,11 @@ For the best understanding of the project, review the documentation in the follo
 6. `phase_04_operational_inefficiency.md`
 7. `phase_05_dashboard_design_documentation.md`
 8. `phase_06_business_insights_recommendations.md`
-9. `data_dictionary.md`
-10. `project_glossary.md`
-11. `security_notes.md`
-12. `tableau_blueprint.md`
+9. `phase_07_inference_prediction.md`
+10. `data_dictionary.md`
+11. `project_glossary.md`
+12. `security_notes.md`
+13. `tableau_blueprint.md`
 
 ---
 
@@ -118,8 +120,9 @@ Throughout the project, all documentation follows these principles:
 | Resource | Description |
 |----------|-------------|
 | `README.md` | Project overview, business problem, methodology, key findings, deliverables, and reproduction guide. |
+| `PROJECT_INFO.md` | Project charter, written retrospectively in October 2026: question, scope, metric definitions and known risks. |
 | `LICENSE` | Open-source license governing project usage and distribution. |
 
 ---
 
-**Last Updated:** July 2026
+**Last Updated:** October 2026

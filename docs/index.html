@@ -720,8 +720,8 @@
 
       <div class="finding-card">
         <div class="finding-category">Early Warning</div>
-        <div class="finding-title">A Single Early Delinquency Corresponded With a 5.7× Higher Default Rate</div>
-        <div class="finding-body">Borrowers with a single 30–59 day delinquency recorded an <span class="danger">18.13%</span> default rate, compared to 3.17% for those with none — an early, observable risk marker rather than waiting for 90+ day default.</div>
+        <div class="finding-title">A 30–59 Day Late Payment Went With 5.7× the Rate of 90+ Day Late Payments</div>
+        <div class="finding-body">Of borrowers with at least one 30–59 day late payment, <span class="danger">18.13%</span> also had a 90+ day late payment on record, against 3.17% of those with none. Both groups are measured at the same snapshot, so this is an association, not a recorded progression.</div>
         <div class="finding-number">03</div>
       </div>
 
@@ -847,7 +847,7 @@
 
     <div class="data-note reveal">
       <div class="data-note-label">Model Limits</div>
-      <p>The scores rank borrowers by risk but are not calibrated probabilities of default, because class weighting was used in training. Expected loss cannot be computed: the data has no loan balance, credit limit or recovery fields. The tiers are engineered from borrower characteristics, so their predictive strength validates the segmentation; it does not show that they cause default.</p>
+      <p>The scores rank borrowers by risk but are not calibrated probabilities of default, because class weighting was used in training. Expected loss cannot be computed: the data has no loan balance, credit limit or recovery fields. The tiers are engineered from borrower characteristics, so their predictive strength validates the segmentation; it does not show that they cause default. The tier rules were set on all 149,999 borrowers, including the 30,000 held out for testing, so the test-set AUC may be somewhat optimistic.</p>
     </div>
   </section>
 
@@ -909,7 +909,7 @@
         </div>
         <div class="insight-right">
           <div class="insight-title">Trigger Outreach at the First 30–59 Day Delinquency</div>
-          <div class="insight-text">A single early delinquency was associated with an approximately <strong>5.7× higher observed default rate</strong> compared with borrowers with no 30–59 day delinquency — supporting earlier review before borrowers reach 90+ day delinquency.</div>
+          <div class="insight-text">Borrowers with a 30–59 day late payment were about <strong>5.7× as likely</strong> to also have a 90+ day late payment on record as borrowers without one — supporting review at the first missed payment rather than at 90+ days.</div>
         </div>
       </div>
 

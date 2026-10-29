@@ -46,15 +46,17 @@ The interaction between age and income identifies a materially higher-risk segme
 
 ---
 
-### Insight 3 — Early delinquency is strongly associated with subsequent serious delinquency
+### Insight 3 — A 30–59 day late payment is associated with 90+ day late payments
 
 **Finding**
 
-Borrowers with one recorded 30–59 day delinquency had an **18.13% observed default rate**, compared with **3.17%** among borrowers with no recorded delinquency in that category — approximately a **5.7× difference**.
+Of borrowers with at least one recorded 30–59 day late payment, **18.13%** also had a 90+ day late payment on record, compared with **3.17%** of borrowers with none — approximately a **5.7× difference**. This uses the late-payment counts, not the default target, and compares two groups at one snapshot.
+
+> **Correction, 29 October 2026:** this insight previously described 18.13% as a default rate for borrowers with a single 30–59 day delinquency. See README → Corrections.
 
 **Business Impact**
 
-A 30–59 day delinquency event can serve as a valuable risk-monitoring trigger for early intervention before serious delinquency is observed.
+A 30–59 day late payment can serve as a monitoring trigger for early review, before a 90+ day late payment is recorded.
 
 > **Analytical limitation:** Because the dataset is cross-sectional and contains no event timestamps, this relationship should be interpreted as an observed association rather than a verified time-based progression.
 
@@ -147,7 +149,7 @@ The observed pattern supports evaluating borrower risk through a combination of 
 | **High** | Flag applicants with zero open credit lines for enhanced underwriting review rather than automatically treating the segment as low risk. | This segment recorded the highest observed default rate among credit-line bands at 25.64%. |
 | **Medium** | Evaluate household dependency burden alongside income when assessing repayment capacity. | Borrowers with 3–4 dependents in the lowest income quartile recorded more than twice the default rate of income-matched borrowers with no dependents. |
 | **Medium** | Monitor borrowers with missing income as a distinct reporting segment rather than excluding them or assigning fabricated values. | Their observed 5.61% default rate provides useful portfolio information while preserving data integrity. |
-| **Medium** | Consider early monitoring or intervention when a borrower records a 30–59 day delinquency event. | This segment showed an approximately 5.7× higher observed default rate than borrowers without such a recorded delinquency. |
+| **Medium** | Consider early monitoring or intervention when a borrower records a 30–59 day delinquency event. | Borrowers with a 30–59 day late payment were about 5.7× as likely to also have a 90+ day late payment on record as borrowers without one. |
 
 ---
 
