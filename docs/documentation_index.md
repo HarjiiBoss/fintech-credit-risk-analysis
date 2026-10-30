@@ -34,6 +34,7 @@ The documentation is organized to mirror the project's analytical workflow. Each
 | `data_dictionary.md` | Defines every original dataset field and engineered feature used throughout the project. |
 | `project_glossary.md` | Provides definitions of lending, credit risk, fintech, and analytical terminology referenced throughout the project. |
 | `security_notes.md` | Documents credential management, environment configuration, security improvements, and development best practices. |
+| `published_surfaces.md` | Lists every place the findings appear outside the repository, with links and the date each was last checked. |
 | `tableau_blueprint.md` | Describes the Tableau dashboard architecture, worksheet mapping, data sources, filters, calculated fields, navigation, and dashboard design plan. |
 
 ---
